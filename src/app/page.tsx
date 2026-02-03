@@ -5,9 +5,8 @@ import { InstagramGenerator } from '@/components/instagram-generator';
 import { TaglineGenerator } from '@/components/tagline-generator';
 import { WhatsappGenerator } from '@/components/whatsapp-generator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Instagram, MessageCircle, Settings, Tags } from 'lucide-react';
+import { Instagram, MessageCircle, Tags } from 'lucide-react';
 import { SettingsProvider } from '@/context/settings-context';
-import { Settings as SettingsComponent } from '@/components/settings';
 
 export default function Home() {
   return (
@@ -16,7 +15,7 @@ export default function Home() {
         <div className="w-full max-w-5xl space-y-8">
           <Header />
           <Tabs defaultValue="instagram" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
+            <TabsList className="grid w-full grid-cols-3">
               <TabsTrigger value="instagram">
                 <Instagram className="mr-2 h-4 w-4" />
                 Instagram Bio
@@ -29,10 +28,6 @@ export default function Home() {
                 <Tags className="mr-2 h-4 w-4" />
                 Tagline
               </TabsTrigger>
-              <TabsTrigger value="settings">
-                <Settings className="mr-2 h-4 w-4" />
-                Settings
-              </TabsTrigger>
             </TabsList>
             <TabsContent value="instagram" className="mt-6">
               <InstagramGenerator />
@@ -42,9 +37,6 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="tagline" className="mt-6">
               <TaglineGenerator />
-            </TabsContent>
-            <TabsContent value="settings" className="mt-6">
-              <SettingsComponent />
             </TabsContent>
           </Tabs>
         </div>
