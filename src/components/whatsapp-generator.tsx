@@ -8,10 +8,9 @@ import { Sparkles } from 'lucide-react';
 
 import {
   generateWhatsAppDescription,
-  type GenerateWhatsAppDescriptionOutput,
 } from '@/ai/flows/generate-whatsapp-description';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -22,9 +21,9 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
-import { GenerationResult } from './generation-result';
-import { Skeleton } from './ui/skeleton';
 import { useSettings } from '@/context/settings-context';
+import { useHistory } from '@/context/history-context';
+import { GenerationResultDialog } from './generation-result-dialog';
 
 const formSchema = z.object({
   businessName: z.string().min(2, { message: 'Business name is required.' }),
@@ -33,9 +32,11 @@ const formSchema = z.object({
 
 export function WhatsappGenerator() {
   const [isPending, startTransition] = useTransition();
-  const [result, setResult] = useState<GenerateWhatsAppDescriptionOutput | null>(null);
+  const [generation, setGeneration] = useState<string | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
   const { nigerianTone, includeEmojis: emojiPreference } = useSettings();
+  const { addHistoryItem } = useHistory();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,7 +47,6 @@ export function WhatsappGenerator() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    setResult(null);
     startTransition(async () => {
       const apiInput = {
         ...values,
@@ -62,13 +62,18 @@ export function WhatsappGenerator() {
         });
         return;
       }
-      setResult({ description: description! });
+      if (description) {
+        addHistoryItem({ type: 'WhatsApp', text: description });
+        setGeneration(description);
+        setIsDialogOpen(true);
+        form.reset();
+      }
     });
   }
 
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-      <Card className="shadow-md">
+    <>
+      <Card className="shadow-md max-w-2xl mx-auto">
         <CardContent className="pt-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -106,28 +111,15 @@ export function WhatsappGenerator() {
           </Form>
         </CardContent>
       </Card>
-      <div className="space-y-4">
-        {isPending && (
-          <Card className="shadow-md">
-            <CardHeader>
-              <Skeleton className="h-6 w-1/2" />
-            </CardHeader>
-            <CardContent>
-              <Skeleton className="h-24 w-full" />
-            </CardContent>
-             <CardFooter>
-               <Skeleton className="h-8 w-24" />
-            </CardFooter>
-          </Card>
-        )}
-        {result?.description && (
-          <GenerationResult
-            title="Your WhatsApp Description"
-            description="Welcome your customers warmly."
-            text={result.description}
-          />
-        )}
-      </div>
-    </div>
+      {generation && (
+        <GenerationResultDialog
+          isOpen={isDialogOpen}
+          onOpenChange={setIsDialogOpen}
+          title="Your WhatsApp Description"
+          description="Welcome your customers warmly."
+          text={generation}
+        />
+      )}
+    </>
   );
 }
