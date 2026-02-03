@@ -38,8 +38,8 @@ export function Settings() {
   };
 
   return (
-    <div className="space-y-4">
-      <div className="space-y-4">
+    <div className="space-y-3">
+      <div className="space-y-2">
         <h3 className="font-headline text-lg font-medium">Content Style</h3>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3">
             <div className="space-y-0.5">
@@ -57,10 +57,10 @@ export function Settings() {
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-2">
         <h3 className="font-headline text-lg font-medium">API Settings</h3>
-        <div className="rounded-lg border p-3 space-y-3">
-          <div className="space-y-2">
+        <div className="rounded-lg border p-3 space-y-2">
+          <div className="space-y-1">
             <Label htmlFor="api-key-input">Google AI API Key</Label>
             <p className="text-sm text-muted-foreground">
              Enter your Google AI API key below.
