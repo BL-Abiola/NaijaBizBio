@@ -44,14 +44,14 @@ export function Settings() {
         <div className="flex flex-row items-center justify-between rounded-lg border p-3">
             <div className="space-y-0.5">
                 <Label htmlFor="nigerian-tone-switch">Add Nigerian Flavour</Label>
-                <p className="text-sm text-muted-foreground">Use local slang and a friendly, Naija tone.</p>
+                <p className="text-sm text-muted-foreground">Use Nigerian slang and tone.</p>
             </div>
             <Switch id="nigerian-tone-switch" checked={nigerianTone} onCheckedChange={setNigerianTone} />
         </div>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3">
             <div className="space-y-0.5">
                 <Label htmlFor="include-emojis-switch">Include Emojis</Label>
-                <p className="text-sm text-muted-foreground">Make your bio pop with relevant emojis.</p>
+                <p className="text-sm text-muted-foreground">Add emojis for personality.</p>
             </div>
             <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
         </div>
@@ -63,7 +63,7 @@ export function Settings() {
           <div className="space-y-2">
             <Label htmlFor="api-key-input">Google AI API Key</Label>
             <p className="text-sm text-muted-foreground">
-              You'll need an API key from Google AI Studio to use this app.
+             Enter your Google AI API key below.
             </p>
           </div>
 
@@ -82,7 +82,7 @@ export function Settings() {
           </div>
 
           <p className="text-xs text-muted-foreground">
-            Don't have a key? Get one from{" "}
+            Get your key from{" "}
             <a
               href="https://aistudio.google.com/app/apikey"
               target="_blank"
