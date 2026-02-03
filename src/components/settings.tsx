@@ -1,59 +1,100 @@
 "use client";
 
+import { useState } from 'react';
 import { useSettings } from '@/context/settings-context';
 import { Switch } from '@/components/ui/switch';
 import { Label } from "@/components/ui/label";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { useToast } from '@/hooks/use-toast';
 
 export function Settings() {
   const { nigerianTone, setNigerianTone, includeEmojis, setIncludeEmojis } = useSettings();
+  const [apiKey, setApiKey] = useState('');
+  const { toast } = useToast();
+
+  const handleSaveApiKey = () => {
+    if (!apiKey.trim()) {
+      toast({
+        variant: 'destructive',
+        title: 'API Key is empty',
+        description: 'Please enter a valid API key.',
+      });
+      return;
+    }
+
+    const envLine = `GEMINI_API_KEY="${apiKey}"`;
+    navigator.clipboard.writeText(envLine);
+
+    toast({
+      title: 'Copied to Clipboard!',
+      description: (
+        <div className="space-y-2">
+          <p>Your environment variable is ready.</p>
+          <p>Open the <code className="font-mono text-xs font-bold text-foreground bg-muted p-1 rounded-sm">.env</code> file and paste the copied line.</p>
+        </div>
+      ),
+    });
+  };
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-row items-center justify-between rounded-lg border p-4">
-          <div className="space-y-0.5">
-              <Label htmlFor="nigerian-tone-switch">Add Nigerian Flavour</Label>
-              <p className="text-sm text-muted-foreground">Use local slang and a friendly, Naija tone.</p>
-          </div>
-          <Switch id="nigerian-tone-switch" checked={nigerianTone} onCheckedChange={setNigerianTone} />
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <h3 className="text-lg font-medium">Content Style</h3>
+        <div className="flex flex-row items-center justify-between rounded-lg border p-4">
+            <div className="space-y-0.5">
+                <Label htmlFor="nigerian-tone-switch">Add Nigerian Flavour</Label>
+                <p className="text-sm text-muted-foreground">Use local slang and a friendly, Naija tone.</p>
+            </div>
+            <Switch id="nigerian-tone-switch" checked={nigerianTone} onCheckedChange={setNigerianTone} />
+        </div>
+        <div className="flex flex-row items-center justify-between rounded-lg border p-4">
+            <div className="space-y-0.5">
+                <Label htmlFor="include-emojis-switch">Include Emojis</Label>
+                <p className="text-sm text-muted-foreground">Make your bio pop with relevant emojis.</p>
+            </div>
+            <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
+        </div>
       </div>
-      <div className="flex flex-row items-center justify-between rounded-lg border p-4">
-          <div className="space-y-0.5">
-              <Label htmlFor="include-emojis-switch">Include Emojis</Label>
-              <p className="text-sm text-muted-foreground">Make your bio pop with relevant emojis.</p>
+
+      <div className="space-y-4">
+        <h3 className="text-lg font-medium">API Settings</h3>
+        <div className="rounded-lg border p-4 space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="api-key-input">Google AI API Key</Label>
+            <p className="text-sm text-muted-foreground">
+              You'll need an API key from Google AI Studio to use this app.
+            </p>
           </div>
-          <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
+
+          <div className="flex items-center gap-2">
+            <Input
+              id="api-key-input"
+              type="password"
+              placeholder="Paste your API key here"
+              value={apiKey}
+              onChange={(e) => setApiKey(e.target.value)}
+              className="flex-1"
+            />
+            <Button onClick={handleSaveApiKey} variant="secondary">
+              Save Key
+            </Button>
+          </div>
+
+          <p className="text-xs text-muted-foreground">
+            Don't have a key? Get one from{" "}
+            <a
+              href="https://aistudio.google.com/app/apikey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Google AI Studio
+            </a>.
+          </p>
+
+        </div>
       </div>
-      <Alert>
-        <Terminal className="h-4 w-4" />
-        <AlertTitle>Set Your API Key</AlertTitle>
-        <AlertDescription>
-          This app uses the Google AI API. Follow these steps to add your key:
-          <ol className="list-decimal list-inside mt-2 space-y-1 text-xs text-muted-foreground">
-            <li>
-              In the file explorer, open the <code className="font-mono text-xs font-bold text-foreground bg-muted p-1 rounded-sm">.env</code> file.
-            </li>
-            <li>
-              Inside that file, you will see a line that says: <code className="font-mono text-xs font-bold text-foreground bg-muted p-1 rounded-sm">GEMINI_API_KEY="YOUR_API_KEY_HERE"</code>
-            </li>
-            <li>
-              Replace <code className="font-mono text-xs font-bold text-foreground bg-muted p-1 rounded-sm">"YOUR_API_KEY_HERE"</code> with your actual API key.
-            </li>
-            <li>
-              If you don't have one, get a key from{" "}
-              <a
-                href="https://aistudio.google.com/app/apikey"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Google AI Studio
-              </a>.
-            </li>
-          </ol>
-        </AlertDescription>
-      </Alert>
     </div>
   );
 }
