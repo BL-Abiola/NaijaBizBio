@@ -35,7 +35,10 @@ export function Settings() {
               In the file explorer, open the <code className="font-mono text-xs font-bold text-foreground bg-muted p-1 rounded-sm">.env</code> file.
             </li>
             <li>
-              Replace the placeholder with your actual API key.
+              Inside that file, you will see a line that says: <code className="font-mono text-xs font-bold text-foreground bg-muted p-1 rounded-sm">GEMINI_API_KEY="YOUR_API_KEY_HERE"</code>
+            </li>
+            <li>
+              Replace <code className="font-mono text-xs font-bold text-foreground bg-muted p-1 rounded-sm">"YOUR_API_KEY_HERE"</code> with your actual API key.
             </li>
             <li>
               If you don't have one, get a key from{" "}
