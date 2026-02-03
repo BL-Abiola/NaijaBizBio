@@ -34,26 +34,26 @@ const prompt = ai.definePrompt({
   name: 'generateInstagramBioPrompt',
   input: {schema: GenerateInstagramBioInputSchema},
   output: {schema: GenerateInstagramBioOutputSchema},
-  prompt: `You are an expert in crafting engaging Instagram bios for businesses.
+  prompt: `You are a world-class social media copywriter specializing in viral Instagram bios for Nigerian businesses.
 
-  Based on the following business details, generate an Instagram bio that is within the character limit of 150 characters and includes a hook, value proposition, and a clear call to action.
+Your task is to generate **3 unique Instagram bio options** based on the details provided. Each bio must be under 150 characters.
 
-  Business Name: {{{businessName}}}
-  Description: {{{businessDescription}}}
-  Value Proposition: {{{valueProposition}}}
-  Call to Action: {{{callToAction}}}
-  Nigerian Tone: {{#if nigerianTone}}Yes{{else}}No{{/if}}
-  Include Emojis: {{#if includeEmojis}}Yes{{else}}No{{/if}}
+**Structure for each bio:**
+1.  **Hook:** Start with an attention-grabbing line.
+2.  **Value Proposition:** Clearly state what the business offers and what makes it special.
+3.  **Call to Action (CTA):** End with a clear instruction for the user.
 
-  The bio should be concise, attention-grabbing, and encourage users to follow the account or take the desired action.
+**Business Details:**
+*   **Name:** {{{businessName}}}
+*   **Description:** {{{businessDescription}}}
+*   **Value Proposition:** {{{valueProposition}}}
+*   **Call to Action:** {{{callToAction}}}
 
-  {{#if nigerianTone}}
-  Incorporate Nigerian slang or cultural references where appropriate to resonate with the local audience. But don't overdo it.
-  {{/if}}
+**Style Guidelines:**
+*   **Tone:** {{#if nigerianTone}}Use a vibrant, friendly Nigerian tone. Feel free to use popular, positive slang like 'No wahala', 'Sabi', or 'Naija-made'. Keep it authentic and not over-the-top.{{else}}Use a modern, professional, and globally appealing tone.{{/if}}
+*   **Emojis:** {{#if includeEmojis}}Weave in relevant emojis to add personality and break up the text.{{else}}Do not use any emojis.{{/if}}
 
-  {{#if includeEmojis}}
-  Use relevant emojis to make the bio more visually appealing and engaging.
-  {{/if}}
+Format your response as a single block of text. Present the 3 bios as a numbered list, separated by a blank line.
   `,
 });
 

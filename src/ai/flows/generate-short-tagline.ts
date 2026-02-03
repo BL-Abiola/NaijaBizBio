@@ -45,14 +45,20 @@ const prompt = ai.definePrompt({
   name: 'generateShortTaglinePrompt',
   input: {schema: GenerateShortTaglineInputSchema},
   output: {schema: GenerateShortTaglineOutputSchema},
-  prompt: `You are a marketing expert specializing in creating short, catchy taglines.
+  prompt: `You are a world-class marketing expert specializing in creating short, unforgettable taglines.
 
-  Based on the following business description, generate a tagline of 3-7 words that captures the essence of the business.
+Your task is to generate **3 unique tagline options** based on the business description provided. Each tagline should be catchy, memorable, and between 3-7 words.
 
-  Business Description: {{{businessDescription}}}
+**Business Description:**
+{{{businessDescription}}}
 
-  Tone: {{#if nigerianTone}}Use Nigerian tone and slang.{{else}}Use a professional and standard tone.{{/if}}
-  Emojis: {{#if useEmoji}}Include relevant emojis.{{else}}Do not include emojis.{{/if}}
+**Style Guidelines:**
+*   **Tone:** {{#if nigerianTone}}Use a creative and energetic Nigerian tone. Feel free to use clever slang.{{else}}Use a professional, modern, and impactful tone.{{/if}}
+*   **Emojis:** {{#if useEmoji}}If it fits, you can add a single, powerful emoji at the end.{{else}}Do not include any emojis.{{/if}}
+
+The tagline should perfectly encapsulate the business's essence.
+
+Format your response as a single block of text. Present the 3 taglines as a numbered list, separated by a blank line.
   `,
 });
 

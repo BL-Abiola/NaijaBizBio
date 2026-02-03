@@ -14,7 +14,7 @@ import {z} from 'genkit';
 const GenerateWhatsAppDescriptionInputSchema = z.object({
   businessName: z.string().describe('The name of the business.'),
   industry: z.string().describe('The industry of the business.'),
-  tonePreference: z.string().describe('The preferred tone for the description (e.g., professional, friendly, Nigerian).'),
+  nigerianTone: z.boolean().describe('Whether to use a Nigerian tone.'),
   emojiPreference: z.boolean().describe('Whether or not to include emojis in the description.'),
 });
 export type GenerateWhatsAppDescriptionInput = z.infer<typeof GenerateWhatsAppDescriptionInputSchema>;
@@ -34,14 +34,20 @@ const prompt = ai.definePrompt({
   output: {schema: GenerateWhatsAppDescriptionOutputSchema},
   prompt: `You are an expert in crafting WhatsApp business descriptions that build trust and encourage engagement.
 
-  Based on the following information, create a professional and welcoming WhatsApp description for the business. Emphasize trust and quick response times.
+Your task is to generate **3 unique WhatsApp description options** for the business based on the details below. Each description should be professional, welcoming, and emphasize trust and quick response times.
 
-  Business Name: {{{businessName}}}
-  Industry: {{{industry}}}
-  Tone Preference: {{{tonePreference}}}
-  Include Emojis: {{#if emojiPreference}}Yes{{else}}No{{/if}}
+**Business Details:**
+*   **Name:** {{{businessName}}}
+*   **Industry:** {{{industry}}}
 
-  Description:`, 
+**Style Guidelines:**
+*   **Tone:** {{#if nigerianTone}}Use a vibrant, friendly Nigerian tone. Incorporate friendly Nigerian phrasing naturally.{{else}}Use a professional and welcoming tone.{{/if}}
+*   **Emojis:** {{#if emojiPreference}}Use emojis to appear friendly and approachable.{{else}}Do not use any emojis.{{/if}}
+
+The description should make customers feel confident about contacting the business.
+
+Format your response as a single block of text. Present the 3 descriptions as a numbered list, separated by a blank line.
+`,
 });
 
 const generateWhatsAppDescriptionFlow = ai.defineFlow(

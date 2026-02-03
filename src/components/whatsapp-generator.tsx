@@ -47,13 +47,12 @@ export function WhatsappGenerator() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     setResult(null);
-    const apiInput = {
-      ...values,
-      tonePreference: nigerianTone ? 'Nigerian' : 'Friendly',
-      emojiPreference,
-    }
-    
     startTransition(async () => {
+      const apiInput = {
+        ...values,
+        nigerianTone,
+        emojiPreference,
+      };
       const { description, error } = await generateWhatsAppDescription(apiInput);
       if (error) {
         toast({
