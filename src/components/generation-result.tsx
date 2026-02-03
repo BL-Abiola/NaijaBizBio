@@ -39,11 +39,11 @@ export function GenerationResult({ title, description, text }: GenerationResultP
   return (
     <Card className="shadow-md">
       <CardHeader>
-        <CardTitle className="font-headline">{title}</CardTitle>
-        <CardDescription className="font-body">{description}</CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="font-body whitespace-pre-wrap rounded-md bg-muted p-4 text-muted-foreground">
+        <p className="whitespace-pre-wrap rounded-md bg-muted p-4 text-muted-foreground">
           {text}
         </p>
       </CardContent>

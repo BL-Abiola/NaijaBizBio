@@ -72,10 +72,10 @@ export function InstagramGenerator() {
   }
 
   return (
-    <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
       <Card className="shadow-md">
         <CardHeader>
-          <CardTitle className="font-headline">Craft Your Instagram Bio</CardTitle>
+          <CardTitle>Craft Your Instagram Bio</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>

@@ -5,10 +5,10 @@ export function Header() {
     <header className="flex items-center justify-center gap-4 text-center">
       <Logo />
       <div>
-        <h1 className="text-4xl font-bold tracking-tight text-primary font-headline sm:text-5xl">
+        <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
           NaijaBizBio
         </h1>
-        <p className="mt-2 text-lg text-foreground/80 font-body">
+        <p className="mt-2 text-lg text-foreground/80">
           AI-powered bios & taglines for your Nigerian business.
         </p>
       </div>

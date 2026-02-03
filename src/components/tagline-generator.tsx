@@ -64,10 +64,10 @@ export function TaglineGenerator() {
   }
 
   return (
-    <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
       <Card className="shadow-md">
         <CardHeader>
-          <CardTitle className="font-headline">Create a Catchy Tagline</CardTitle>
+          <CardTitle>Create a Catchy Tagline</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
