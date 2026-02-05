@@ -15,7 +15,7 @@ const GenerateWhatsAppDescriptionInputSchema = z.object({
   businessName: z.string().describe('The name of the business.'),
   industry: z.string().describe('The industry of the business.'),
   nigerianTone: z.boolean().describe('Whether to use a Nigerian tone.'),
-  emojiPreference: z.boolean().describe('Whether or not to include emojis in the description.'),
+  includeEmojis: z.boolean().describe('Whether or not to include emojis in the description.'),
 });
 export type GenerateWhatsAppDescriptionInput = z.infer<typeof GenerateWhatsAppDescriptionInputSchema>;
 
@@ -42,7 +42,7 @@ Your task is to generate **3 unique WhatsApp description options** for the busin
 
 **Style Guidelines:**
 *   **Tone:** {{#if nigerianTone}}Use a vibrant, friendly Nigerian tone. Incorporate friendly Nigerian phrasing naturally.{{else}}Use a professional and welcoming tone.{{/if}}
-*   **Emojis:** {{#if emojiPreference}}Use emojis to appear friendly and approachable.{{else}}Do not use any emojis.{{/if}}
+*   **Emojis:** {{#if includeEmojis}}Use emojis to appear friendly and approachable.{{else}}Do not use any emojis.{{/if}}
 
 The description should make customers feel confident about contacting the business.
 

@@ -35,7 +35,7 @@ export function WhatsappGenerator() {
   const [generation, setGeneration] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
-  const { nigerianTone, includeEmojis: emojiPreference } = useSettings();
+  const { nigerianTone, includeEmojis } = useSettings();
   const { addHistoryItem } = useHistory();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -51,7 +51,7 @@ export function WhatsappGenerator() {
       const apiInput = {
         ...values,
         nigerianTone,
-        emojiPreference,
+        includeEmojis,
       };
       const { description, error } = await generateWhatsAppDescription(apiInput);
       if (error) {
