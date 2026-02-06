@@ -14,6 +14,7 @@ type HistoryContextType = {
   history: HistoryItem[];
   addHistoryItem: (item: Omit<HistoryItem, 'id' | 'timestamp'>) => void;
   clearHistory: () => void;
+  deleteHistoryItem: (id: string) => void;
 };
 
 const HistoryContext = createContext<HistoryContextType | undefined>(undefined);
@@ -61,12 +62,23 @@ export function HistoryProvider({ children }: { children: ReactNode }) {
     });
   };
 
+  const deleteHistoryItem = (id: string) => {
+    const updatedHistory = history.filter((item) => item.id !== id);
+    setHistory(updatedHistory);
+    updateLocalStorage(updatedHistory);
+    toast({
+      title: 'Item Deleted',
+      description: 'The selected item has been removed from your history.',
+    });
+  };
+
   return (
     <HistoryContext.Provider
       value={{
         history,
         addHistoryItem,
         clearHistory,
+        deleteHistoryItem,
       }}
     >
       {children}

@@ -21,7 +21,7 @@ import {
 import { useToast } from '@/hooks/use-toast';
 
 export function HistoryPage() {
-  const { history, clearHistory } = useHistory();
+  const { history, deleteHistoryItem } = useHistory();
   const { toast } = useToast();
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -53,32 +53,10 @@ export function HistoryPage() {
 
   return (
     <Card className="shadow-md">
-       <CardHeader className="flex flex-row items-center justify-between">
-        <div>
+       <CardHeader>
           <CardTitle>Generation History</CardTitle>
           <CardDescription>Review your past generations.</CardDescription>
-        </div>
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button variant="destructive" size="icon" disabled={history.length === 0}>
-                <Trash2 className="h-4 w-4" />
-                <span className="sr-only">Clear History</span>
-            </Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This will permanently delete your entire generation history. This action cannot be undone.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={clearHistory}>Delete</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </CardHeader>
+        </CardHeader>
       <CardContent>
         {history.length > 0 ? (
           <ScrollArea className="h-96">
@@ -95,14 +73,36 @@ export function HistoryPage() {
                     <p className="whitespace-pre-wrap rounded-md bg-muted p-4 text-muted-foreground mb-2">
                         {item.text}
                     </p>
-                    <Button onClick={() => handleCopy(item.text, item.id)} variant="ghost" size="sm">
-                        {copiedId === item.id ? (
-                            <Check className="mr-2 h-4 w-4 text-green-500" />
-                        ) : (
-                            <ClipboardCopy className="mr-2 h-4 w-4" />
-                        )}
-                        {copiedId === item.id ? 'Copied!' : 'Copy'}
-                    </Button>
+                    <div className="flex items-center gap-2">
+                        <Button onClick={() => handleCopy(item.text, item.id)} variant="ghost" size="sm">
+                            {copiedId === item.id ? (
+                                <Check className="mr-2 h-4 w-4 text-green-500" />
+                            ) : (
+                                <ClipboardCopy className="mr-2 h-4 w-4" />
+                            )}
+                            {copiedId === item.id ? 'Copied!' : 'Copy'}
+                        </Button>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+                                <Trash2 className="mr-2 h-4 w-4" />
+                                Delete
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                This will permanently delete this item from your history. This action cannot be undone.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction onClick={() => deleteHistoryItem(item.id)}>Delete</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
+                    </div>
                   </AccordionContent>
                 </AccordionItem>
               ))}
