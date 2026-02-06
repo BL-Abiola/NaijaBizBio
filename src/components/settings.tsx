@@ -17,10 +17,13 @@ import {
 } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const generatorOptions: {id: GeneratorId, label: string}[] = [
+const socialGeneratorOptions: {id: GeneratorId, label: string}[] = [
     { id: 'instagram', label: 'Instagram Bio' },
     { id: 'whatsapp', label: 'WhatsApp Description' },
     { id: 'twitter', label: 'X / Twitter Post' },
+];
+
+const otherGeneratorOptions: {id: GeneratorId, label: string}[] = [
     { id: 'tagline', label: 'Tagline Generator' },
     { id: 'product', label: 'Product Description' },
 ];
@@ -108,26 +111,50 @@ export function Settings() {
             </div>
         </TabsContent>
         <TabsContent value="generators" className="pt-6">
-            <div className="rounded-lg border p-3 space-y-3">
-                <div className="space-y-1 mb-4">
-                    <Label>Enabled Generators</Label>
-                    <p className="text-sm text-muted-foreground">
-                        Choose which content generators to show in the app.
-                    </p>
-                </div>
-                <div className="space-y-2">
-                    {generatorOptions.map(gen => (
-                        <div key={gen.id} className="flex flex-row items-center justify-between rounded-lg border p-3">
-                            <div className="space-y-0.5">
-                                <Label htmlFor={`${gen.id}-switch`}>{gen.label}</Label>
+            <div className="space-y-4">
+                <div className="rounded-lg border p-3 space-y-3">
+                    <div className="space-y-1 mb-2">
+                        <Label>Social Platforms</Label>
+                        <p className="text-sm text-muted-foreground">
+                            Enable or disable specific social media generators.
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        {socialGeneratorOptions.map(gen => (
+                            <div key={gen.id} className="flex flex-row items-center justify-between rounded-lg border p-3">
+                                <div className="space-y-0.5">
+                                    <Label htmlFor={`${gen.id}-switch`}>{gen.label}</Label>
+                                </div>
+                                <Switch
+                                    id={`${gen.id}-switch`}
+                                    checked={enabledGenerators[gen.id]}
+                                    onCheckedChange={() => toggleGenerator(gen.id)}
+                                />
                             </div>
-                            <Switch
-                                id={`${gen.id}-switch`}
-                                checked={enabledGenerators[gen.id]}
-                                onCheckedChange={() => toggleGenerator(gen.id)}
-                            />
-                        </div>
-                    ))}
+                        ))}
+                    </div>
+                </div>
+                <div className="rounded-lg border p-3 space-y-3">
+                    <div className="space-y-1 mb-2">
+                        <Label>Other Tools</Label>
+                        <p className="text-sm text-muted-foreground">
+                            Enable or disable other content creation tools.
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        {otherGeneratorOptions.map(gen => (
+                            <div key={gen.id} className="flex flex-row items-center justify-between rounded-lg border p-3">
+                                <div className="space-y-0.5">
+                                    <Label htmlFor={`${gen.id}-switch`}>{gen.label}</Label>
+                                </div>
+                                <Switch
+                                    id={`${gen.id}-switch`}
+                                    checked={enabledGenerators[gen.id]}
+                                    onCheckedChange={() => toggleGenerator(gen.id)}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </TabsContent>
