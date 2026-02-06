@@ -17,6 +17,12 @@ import {
 } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { DialogClose } from '@/components/ui/dialog';
+import {
+    Palette,
+    BotMessageSquare,
+    SlidersHorizontal,
+    KeyRound,
+} from 'lucide-react';
 
 const socialGeneratorOptions: {id: GeneratorId, label: string}[] = [
     { id: 'instagram', label: 'Instagram Bio' },
@@ -66,10 +72,22 @@ export function Settings() {
   return (
     <Tabs defaultValue="appearance" className="w-full">
         <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="appearance">Appearance</TabsTrigger>
-            <TabsTrigger value="style">Style</TabsTrigger>
-            <TabsTrigger value="generators">Generators</TabsTrigger>
-            <TabsTrigger value="api">API</TabsTrigger>
+            <TabsTrigger value="appearance">
+                <Palette className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">Appearance</span>
+            </TabsTrigger>
+            <TabsTrigger value="style">
+                <BotMessageSquare className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">Style</span>
+            </TabsTrigger>
+            <TabsTrigger value="generators">
+                <SlidersHorizontal className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">Generators</span>
+            </TabsTrigger>
+            <TabsTrigger value="api">
+                <KeyRound className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">API</span>
+            </TabsTrigger>
         </TabsList>
         <TabsContent value="appearance" className="pt-6">
             <div className="max-h-[400px] space-y-2 overflow-y-auto p-1">
