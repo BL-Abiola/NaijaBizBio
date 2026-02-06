@@ -50,8 +50,8 @@ function AppContent() {
     cn(
       "flex-1 items-center justify-center text-base py-3 rounded-lg transition-all duration-200 ease-in-out font-medium",
       isActive
-        ? "bg-primary text-primary-foreground shadow-lg hover:bg-primary/90"
-        : "text-muted-foreground bg-transparent hover:bg-primary/10 hover:text-primary"
+        ? 'shadow-lg'
+        : 'bg-transparent text-muted-foreground hover:bg-primary/10 hover:text-primary'
     );
 
   const navIconClasses = "h-5 w-5 md:mr-2";
@@ -63,7 +63,7 @@ function AppContent() {
         <div className="flex w-full items-center rounded-2xl bg-muted p-1.5 my-8 gap-1.5">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className={navButtonClasses(isSocialView)}>
+                <Button variant="default" className={navButtonClasses(isSocialView)}>
                   <Share2 className={navIconClasses} />
                   <span className="hidden md:inline">Social</span>
                   <ChevronDown className="h-4 w-4 ml-1 hidden md:inline" />
@@ -86,7 +86,7 @@ function AppContent() {
             </DropdownMenu>
 
             <Button 
-                variant="ghost"
+                variant="default"
                 onClick={() => setActiveView('tagline')}
                 className={navButtonClasses(activeView === 'tagline')}
             >
@@ -94,7 +94,7 @@ function AppContent() {
                 <span className="hidden md:inline">Tagline</span>
             </Button>
             <Button 
-                variant="ghost"
+                variant="default"
                 onClick={() => setActiveView('product')}
                 className={navButtonClasses(activeView === 'product')}
             >
@@ -102,7 +102,7 @@ function AppContent() {
                 <span className="hidden md:inline">Product</span>
             </Button>
             <Button 
-                variant="ghost"
+                variant="default"
                 onClick={() => setActiveView('history')}
                 className={navButtonClasses(activeView === 'history')}
             >
