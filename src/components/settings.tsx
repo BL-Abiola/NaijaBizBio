@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { DialogClose } from '@/components/ui/dialog';
+import { Separator } from '@/components/ui/separator';
 import {
     Palette,
     BotMessageSquare,
@@ -79,13 +80,13 @@ export function Settings() {
                 <Info className="md:mr-2 h-4 w-4" />
                 <span className="hidden md:inline">About</span>
             </TabsTrigger>
-            <TabsTrigger value="api">
-                <KeyRound className="md:mr-2 h-4 w-4" />
-                <span className="hidden md:inline">API</span>
-            </TabsTrigger>
             <TabsTrigger value="appearance">
                 <Palette className="md:mr-2 h-4 w-4" />
                 <span className="hidden md:inline">Appearance</span>
+            </TabsTrigger>
+            <TabsTrigger value="api">
+                <KeyRound className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">API</span>
             </TabsTrigger>
             <TabsTrigger value="generators">
                 <SlidersHorizontal className="md:mr-2 h-4 w-4" />
@@ -99,27 +100,29 @@ export function Settings() {
         <TabsContent value="about" className="pt-6">
             <div className="max-h-[400px] space-y-4 overflow-y-auto p-1">
                 <div className="rounded-lg border p-4 text-center">
-                    <h3 className="font-headline text-2xl font-bold text-primary">NaijaBizBio</h3>
-                    <p className="text-sm text-muted-foreground">Version 1.0.0</p>
-                    <p className="mt-2 text-foreground/80">
-                        Your AI-powered assistant for crafting the perfect bios, taglines, and descriptions for your Nigerian business.
-                    </p>
-                </div>
-                <div className="rounded-lg border p-4 text-center">
-                    <h4 className="font-semibold text-foreground">Built by Studio</h4>
-                    <p className="text-sm text-muted-foreground">Your Friendly AI Coding Partner</p>
-                    <div className="mt-4 flex justify-center gap-4">
-                        <a href="https://twitter.com/Firebase" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Twitter className="h-5 w-5" />
-                            <span className="sr-only">Twitter</span>
-                        </a>
-                        <a href="mailto:firebase-support@google.com" className="text-muted-foreground hover:text-primary transition-colors">
-                            <Mail className="h-5 w-5" />
-                            <span className="sr-only">Email</span>
-                        </a>
+                    <div>
+                        <h3 className="font-headline text-2xl font-bold text-primary">NaijaBizBio</h3>
+                        <p className="text-sm text-muted-foreground">Version 1.0.0</p>
+                        <p className="mt-2 text-foreground/80">
+                            Your AI-powered assistant for crafting the perfect bios, taglines, and descriptions for your Nigerian business.
+                        </p>
                     </div>
-                </div>
-                 <div className="rounded-lg border p-4 text-center">
+                    <Separator className="my-4" />
+                    <div>
+                        <h4 className="font-semibold text-foreground">Built by Studio</h4>
+                        <p className="text-sm text-muted-foreground">Your Friendly AI Coding Partner</p>
+                        <div className="mt-4 flex justify-center gap-4">
+                            <a href="https://twitter.com/Firebase" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                                <Twitter className="h-5 w-5" />
+                                <span className="sr-only">Twitter</span>
+                            </a>
+                            <a href="mailto:firebase-support@google.com" className="text-muted-foreground hover:text-primary transition-colors">
+                                <Mail className="h-5 w-5" />
+                                <span className="sr-only">Email</span>
+                            </a>
+                        </div>
+                    </div>
+                    <Separator className="my-4" />
                     <p className="text-sm text-muted-foreground">
                         Made with ❤️ in Lagos, Nigeria.
                     </p>
