@@ -136,7 +136,7 @@ export function Settings() {
         </TabsContent>
         <TabsContent value="api" className="pt-6">
             <div className="max-h-[400px] space-y-2 overflow-y-auto p-1">
-              <div className="rounded-lg border p-3 space-y-2">
+              <div className="rounded-lg border p-4 space-y-2">
                 <div className="space-y-1">
                   <Label htmlFor="api-key-input">Google AI API Key</Label>
                   <p className="text-sm text-muted-foreground">
@@ -179,11 +179,8 @@ export function Settings() {
         </TabsContent>
         <TabsContent value="appearance" className="pt-6">
             <div className="max-h-[400px] space-y-2 overflow-y-auto p-1">
-                <div className="flex flex-row items-center justify-between rounded-lg border p-3">
-                    <div className="space-y-0.5">
-                        <Label htmlFor="dark-mode-switch">Dark Mode</Label>
-                        <p className="text-sm text-muted-foreground">Toggle between light and dark themes.</p>
-                    </div>
+                <div className="flex flex-row items-center justify-between rounded-lg border p-4">
+                    <Label htmlFor="dark-mode-switch" className="font-medium">Dark Mode</Label>
                     <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
                 </div>
             </div>
@@ -195,19 +192,17 @@ export function Settings() {
         </TabsContent>
         <TabsContent value="generators" className="pt-6">
             <div className="max-h-[400px] space-y-4 overflow-y-auto p-1">
-                <div className="rounded-lg border p-3 space-y-3">
-                    <div className="space-y-1 mb-2">
+                <div className="rounded-lg border p-4 space-y-3">
+                    <div className="space-y-1 mb-3">
                         <Label>Social Platforms</Label>
                         <p className="text-sm text-muted-foreground">
                             Enable or disable specific social media generators.
                         </p>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                         {socialGeneratorOptions.map(gen => (
-                            <div key={gen.id} className="flex flex-row items-center justify-between rounded-lg border p-3">
-                                <div className="space-y-0.5">
-                                    <Label htmlFor={`${gen.id}-switch`}>{gen.label}</Label>
-                                </div>
+                            <div key={gen.id} className="flex flex-row items-center justify-between">
+                                <Label htmlFor={`${gen.id}-switch`} className="font-normal">{gen.label}</Label>
                                 <Switch
                                     id={`${gen.id}-switch`}
                                     checked={enabledGenerators[gen.id]}
@@ -217,19 +212,17 @@ export function Settings() {
                         ))}
                     </div>
                 </div>
-                <div className="rounded-lg border p-3 space-y-3">
-                    <div className="space-y-1 mb-2">
+                <div className="rounded-lg border p-4 space-y-3">
+                    <div className="space-y-1 mb-3">
                         <Label>Other Tools</Label>
                         <p className="text-sm text-muted-foreground">
                             Enable or disable other content creation tools.
                         </p>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                         {otherGeneratorOptions.map(gen => (
-                            <div key={gen.id} className="flex flex-row items-center justify-between rounded-lg border p-3">
-                                <div className="space-y-0.5">
-                                    <Label htmlFor={`${gen.id}-switch`}>{gen.label}</Label>
-                                </div>
+                            <div key={gen.id} className="flex flex-row items-center justify-between">
+                                <Label htmlFor={`${gen.id}-switch`} className="font-normal">{gen.label}</Label>
                                 <Switch
                                     id={`${gen.id}-switch`}
                                     checked={enabledGenerators[gen.id]}
@@ -248,12 +241,9 @@ export function Settings() {
         </TabsContent>
         <TabsContent value="style" className="pt-6">
             <div className="max-h-[400px] space-y-3 overflow-y-auto p-1">
-              <div className="rounded-lg border p-3 space-y-3">
+              <div className="rounded-lg border p-4 space-y-4">
                 <div className="flex flex-row items-center justify-between">
-                    <div className="space-y-0.5">
-                        <Label>Tone of Voice</Label>
-                        <p className="text-sm text-muted-foreground">Set the personality for the AI.</p>
-                    </div>
+                    <Label>Tone of Voice</Label>
                     <Select value={tone} onValueChange={setTone}>
                         <SelectTrigger className="w-[140px]">
                             <SelectValue placeholder="Select tone" />
@@ -268,10 +258,7 @@ export function Settings() {
                     </Select>
                 </div>
                 <div className="flex flex-row items-center justify-between">
-                    <div className="space-y-0.5">
-                        <Label htmlFor="include-emojis-switch">Include Emojis</Label>
-                        <p className="text-sm text-muted-foreground">Add emojis for personality.</p>
-                    </div>
+                    <Label htmlFor="include-emojis-switch">Include Emojis</Label>
                     <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
                 </div>
               </div>
