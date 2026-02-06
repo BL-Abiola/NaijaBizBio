@@ -32,7 +32,6 @@ import {
   } from "@/components/ui/alert-dialog";
 import {
     Palette,
-    BotMessageSquare,
     SlidersHorizontal,
     KeyRound,
     Info,
@@ -98,7 +97,7 @@ export function Settings() {
 
   return (
     <Tabs defaultValue="about" className="w-full">
-        <TabsList className="grid w-full grid-cols-6">
+        <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="about">
                 <Info className="md:mr-2 h-4 w-4" />
                 <span className="hidden md:inline">About</span>
@@ -114,10 +113,6 @@ export function Settings() {
             <TabsTrigger value="generators">
                 <SlidersHorizontal className="md:mr-2 h-4 w-4" />
                 <span className="hidden md:inline">Generators</span>
-            </TabsTrigger>
-            <TabsTrigger value="style">
-                <BotMessageSquare className="md:mr-2 h-4 w-4" />
-                <span className="hidden md:inline">Style</span>
             </TabsTrigger>
             <TabsTrigger value="reset">
                 <RotateCcw className="md:mr-2 h-4 w-4" />
@@ -205,10 +200,28 @@ export function Settings() {
             </div>
         </TabsContent>
         <TabsContent value="appearance" className="pt-6">
-            <div className="max-h-[250px] space-y-2 overflow-y-auto p-1">
-                <div className="flex flex-row items-center justify-between rounded-lg border p-4">
-                    <Label htmlFor="dark-mode-switch" className="font-medium">Dark Mode</Label>
-                    <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
+            <div className="max-h-[250px] space-y-4 overflow-y-auto p-1">
+                <div className="space-y-3 rounded-lg border p-4">
+                    <div className="flex flex-row items-center justify-between">
+                        <Label htmlFor="dark-mode-switch" className="font-medium">Dark Mode</Label>
+                        <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
+                    </div>
+                    <Separator />
+                    <div className="flex flex-row items-center justify-between">
+                        <Label>Tone of Voice</Label>
+                        <Select value={tone} onValueChange={setTone}>
+                            <SelectTrigger className="w-[140px]">
+                                <SelectValue placeholder="Select tone" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="Nigerian">Nigerian</SelectItem>
+                                <SelectItem value="Professional">Professional</SelectItem>
+                                <SelectItem value="Playful">Playful</SelectItem>
+                                <SelectItem value="Witty">Witty</SelectItem>
+                                <SelectItem value="Inspirational">Inspirational</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
                 </div>
             </div>
             <div className="mt-4 border-t pt-4">
@@ -219,9 +232,9 @@ export function Settings() {
         </TabsContent>
         <TabsContent value="generators" className="pt-6">
             <div className="max-h-[250px] space-y-4 overflow-y-auto p-1">
-                <div className="space-y-3 rounded-lg border p-4">
+                <div className="rounded-lg border p-4">
                     <Label className="font-medium">Social Platforms</Label>
-                    <div className="space-y-3">
+                    <div className="space-y-3 pt-3">
                         {socialGeneratorOptions.map(gen => (
                             <div key={gen.id} className="flex flex-row items-center justify-between">
                                 <Label htmlFor={`${gen.id}-switch`} className="font-normal">{gen.label}</Label>
@@ -234,9 +247,9 @@ export function Settings() {
                         ))}
                     </div>
                 </div>
-                <div className="space-y-3 rounded-lg border p-4">
+                <div className="rounded-lg border p-4">
                     <Label className="font-medium">Other Tools</Label>
-                    <div className="space-y-3">
+                    <div className="space-y-3 pt-3">
                         {otherGeneratorOptions.map(gen => (
                             <div key={gen.id} className="flex flex-row items-center justify-between">
                                 <Label htmlFor={`${gen.id}-switch`} className="font-normal">{gen.label}</Label>
@@ -249,30 +262,6 @@ export function Settings() {
                         ))}
                     </div>
                 </div>
-            </div>
-            <div className="mt-4 border-t pt-4">
-                <DialogClose asChild>
-                    <Button className="w-full">Done</Button>
-                </DialogClose>
-            </div>
-        </TabsContent>
-        <TabsContent value="style" className="pt-6">
-            <div className="max-h-[250px] space-y-3 overflow-y-auto p-1">
-              <div className="flex flex-row items-center justify-between rounded-lg border p-4">
-                <Label>Tone of Voice</Label>
-                <Select value={tone} onValueChange={setTone}>
-                    <SelectTrigger className="w-[140px]">
-                        <SelectValue placeholder="Select tone" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="Nigerian">Nigerian</SelectItem>
-                        <SelectItem value="Professional">Professional</SelectItem>
-                        <SelectItem value="Playful">Playful</SelectItem>
-                        <SelectItem value="Witty">Witty</SelectItem>
-                        <SelectItem value="Inspirational">Inspirational</SelectItem>
-                    </SelectContent>
-                </Select>
-              </div>
             </div>
             <div className="mt-4 border-t pt-4">
                 <DialogClose asChild>
