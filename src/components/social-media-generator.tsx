@@ -6,6 +6,7 @@ import { WhatsappGenerator } from '@/components/whatsapp-generator';
 import { TwitterPostGenerator } from '@/components/twitter-post-generator';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
+// This component is no longer in use. The navigation has been moved to the main page.
 export function SocialMediaGenerator() {
   return (
     <Tabs defaultValue="instagram" className="w-full">
