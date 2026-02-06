@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export function Settings() {
   const { tone, setTone, includeEmojis, setIncludeEmojis } = useSettings();
@@ -47,86 +48,88 @@ export function Settings() {
   };
 
   return (
-    <div className="space-y-4">
-      <div className="space-y-2">
-        <h3 className="font-headline text-lg font-medium">Appearance</h3>
-        <div className="flex flex-row items-center justify-between rounded-lg border p-3">
-            <div className="space-y-0.5">
-                <Label htmlFor="dark-mode-switch">Dark Mode</Label>
-                <p className="text-sm text-muted-foreground">Toggle between light and dark themes.</p>
+    <Tabs defaultValue="appearance" className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="appearance">Appearance</TabsTrigger>
+            <TabsTrigger value="style">Style</TabsTrigger>
+            <TabsTrigger value="api">API</TabsTrigger>
+        </TabsList>
+        <TabsContent value="appearance" className="pt-6">
+            <div className="space-y-2">
+                <div className="flex flex-row items-center justify-between rounded-lg border p-3">
+                    <div className="space-y-0.5">
+                        <Label htmlFor="dark-mode-switch">Dark Mode</Label>
+                        <p className="text-sm text-muted-foreground">Toggle between light and dark themes.</p>
+                    </div>
+                    <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
+                </div>
             </div>
-            <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
-        </div>
-      </div>
-      <div className="space-y-2">
-        <h3 className="font-headline text-lg font-medium">Content Style</h3>
-        <div className="rounded-lg border p-3 space-y-3">
-          <div className="flex flex-row items-center justify-between">
-              <div className="space-y-0.5">
-                  <Label>Tone of Voice</Label>
-                  <p className="text-sm text-muted-foreground">Set the personality for the AI.</p>
+        </TabsContent>
+        <TabsContent value="style" className="pt-6">
+            <div className="rounded-lg border p-3 space-y-3">
+              <div className="flex flex-row items-center justify-between">
+                  <div className="space-y-0.5">
+                      <Label>Tone of Voice</Label>
+                      <p className="text-sm text-muted-foreground">Set the personality for the AI.</p>
+                  </div>
+                  <Select value={tone} onValueChange={setTone}>
+                      <SelectTrigger className="w-[140px]">
+                          <SelectValue placeholder="Select tone" />
+                      </SelectTrigger>
+                      <SelectContent>
+                          <SelectItem value="Nigerian">Nigerian</SelectItem>
+                          <SelectItem value="Professional">Professional</SelectItem>
+                          <SelectItem value="Playful">Playful</SelectItem>
+                          <SelectItem value="Witty">Witty</SelectItem>
+                          <SelectItem value="Inspirational">Inspirational</SelectItem>
+                      </SelectContent>
+                  </Select>
               </div>
-              <Select value={tone} onValueChange={setTone}>
-                  <SelectTrigger className="w-[140px]">
-                      <SelectValue placeholder="Select tone" />
-                  </SelectTrigger>
-                  <SelectContent>
-                      <SelectItem value="Nigerian">Nigerian</SelectItem>
-                      <SelectItem value="Professional">Professional</SelectItem>
-                      <SelectItem value="Playful">Playful</SelectItem>
-                      <SelectItem value="Witty">Witty</SelectItem>
-                      <SelectItem value="Inspirational">Inspirational</SelectItem>
-                  </SelectContent>
-              </Select>
-          </div>
-          <div className="flex flex-row items-center justify-between">
-              <div className="space-y-0.5">
-                  <Label htmlFor="include-emojis-switch">Include Emojis</Label>
-                  <p className="text-sm text-muted-foreground">Add emojis for personality.</p>
+              <div className="flex flex-row items-center justify-between">
+                  <div className="space-y-0.5">
+                      <Label htmlFor="include-emojis-switch">Include Emojis</Label>
+                      <p className="text-sm text-muted-foreground">Add emojis for personality.</p>
+                  </div>
+                  <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
               </div>
-              <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
-          </div>
-        </div>
-      </div>
+            </div>
+        </TabsContent>
+        <TabsContent value="api" className="pt-6">
+            <div className="rounded-lg border p-3 space-y-2">
+              <div className="space-y-1">
+                <Label htmlFor="api-key-input">Google AI API Key</Label>
+                <p className="text-sm text-muted-foreground">
+                Enter your Google AI API key below.
+                </p>
+              </div>
 
-      <div className="space-y-2">
-        <h3 className="font-headline text-lg font-medium">API Settings</h3>
-        <div className="rounded-lg border p-3 space-y-2">
-          <div className="space-y-1">
-            <Label htmlFor="api-key-input">Google AI API Key</Label>
-            <p className="text-sm text-muted-foreground">
-             Enter your Google AI API key below.
-            </p>
-          </div>
+              <div className="flex items-center gap-2">
+                <Input
+                  id="api-key-input"
+                  type="password"
+                  placeholder="Paste your API key here"
+                  value={apiKey}
+                  onChange={(e) => setApiKey(e.target.value)}
+                  className="flex-1"
+                />
+                <Button onClick={handleSaveApiKey} variant="secondary">
+                  Save Key
+                </Button>
+              </div>
 
-          <div className="flex items-center gap-2">
-            <Input
-              id="api-key-input"
-              type="password"
-              placeholder="Paste your API key here"
-              value={apiKey}
-              onChange={(e) => setApiKey(e.target.value)}
-              className="flex-1"
-            />
-            <Button onClick={handleSaveApiKey} variant="secondary">
-              Save Key
-            </Button>
-          </div>
-
-          <p className="text-xs text-muted-foreground">
-            Get your key from{" "}
-            <a
-              href="https://aistudio.google.com/app/apikey"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Google AI Studio
-            </a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
+              <p className="text-xs text-muted-foreground">
+                Get your key from{" "}
+                <a
+                  href="https://aistudio.google.com/app/apikey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Google AI Studio
+                </a>.
+              </p>
+            </div>
+        </TabsContent>
+    </Tabs>
   );
 }

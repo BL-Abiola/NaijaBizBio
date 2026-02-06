@@ -31,13 +31,11 @@ export function Header() {
             <span className="sr-only">Settings</span>
           </Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-xs rounded-3xl">
+        <DialogContent className="sm:max-w-md rounded-3xl">
           <DialogHeader>
             <DialogTitle>Settings</DialogTitle>
           </DialogHeader>
-          <div className="py-4">
-            <SettingsComponent />
-          </div>
+          <SettingsComponent />
         </DialogContent>
       </Dialog>
     </header>
