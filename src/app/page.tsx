@@ -46,7 +46,8 @@ function AppContent() {
 
   const isSocialView = ['instagram', 'whatsapp', 'twitter'].includes(activeView);
 
-  const navItemClasses = "w-full h-auto px-3 py-1.5 text-sm font-medium";
+  const navItemClasses = "w-full";
+  const activeClasses = "bg-background text-foreground shadow-sm hover:bg-background";
 
   return (
     <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +58,7 @@ function AppContent() {
               <DropdownMenuTrigger asChild>
                 <Button 
                   variant="ghost" 
-                  className={cn(navItemClasses, isSocialView && "bg-background text-foreground shadow-sm")}
+                  className={cn(navItemClasses, isSocialView && activeClasses)}
                 >
                   <Share2 className="h-4 w-4 md:mr-2" />
                   <span className="hidden md:inline">Social</span>
@@ -82,7 +83,7 @@ function AppContent() {
 
             <Button 
                 variant="ghost" 
-                className={cn(navItemClasses, activeView === 'tagline' && "bg-background text-foreground shadow-sm")}
+                className={cn(navItemClasses, activeView === 'tagline' && activeClasses)}
                 onClick={() => setActiveView('tagline')}
             >
                 <Tags className="h-4 w-4 md:mr-2" />
@@ -90,7 +91,7 @@ function AppContent() {
             </Button>
             <Button 
                 variant="ghost" 
-                className={cn(navItemClasses, activeView === 'product' && "bg-background text-foreground shadow-sm")}
+                className={cn(navItemClasses, activeView === 'product' && activeClasses)}
                 onClick={() => setActiveView('product')}
             >
                 <ShoppingBag className="h-4 w-4 md:mr-2" />
@@ -98,7 +99,7 @@ function AppContent() {
             </Button>
             <Button 
                 variant="ghost" 
-                className={cn(navItemClasses, activeView === 'history' && "bg-background text-foreground shadow-sm")}
+                className={cn(navItemClasses, activeView === 'history' && activeClasses)}
                 onClick={() => setActiveView('history')}
             >
                 <History className="h-4 w-4 md:mr-2" />
