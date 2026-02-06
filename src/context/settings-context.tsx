@@ -3,7 +3,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
 type Tone = 'Nigerian' | 'Professional' | 'Playful' | 'Witty' | 'Inspirational';
-export type GeneratorId = 'instagram' | 'whatsapp' | 'twitter' | 'tagline' | 'product';
+export type GeneratorId = 'instagram' | 'whatsapp' | 'twitter' | 'tagline' | 'product' | 'facebook';
 type EnabledGenerators = Record<GeneratorId, boolean>;
 
 const defaultSettings = {
@@ -14,6 +14,7 @@ const defaultSettings = {
     twitter: true,
     tagline: true,
     product: true,
+    facebook: true,
   },
 };
 

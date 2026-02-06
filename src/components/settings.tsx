@@ -42,6 +42,7 @@ import {
 
 const socialGeneratorOptions: {id: GeneratorId, label: string}[] = [
     { id: 'instagram', label: 'Instagram Bio' },
+    { id: 'facebook', label: 'Facebook Post' },
     { id: 'whatsapp', label: 'WhatsApp Description' },
     { id: 'twitter', label: 'X / Twitter Post' },
 ];

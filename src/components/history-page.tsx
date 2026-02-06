@@ -37,6 +37,8 @@ export function HistoryPage() {
         return 'Product Description';
       case 'Twitter Post':
         return 'Twitter Post';
+      case 'Facebook Post':
+        return 'Facebook Post';
     }
   }
 

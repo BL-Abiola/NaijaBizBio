@@ -9,9 +9,10 @@ import { ProductDescriptionGenerator } from '@/components/product-description-ge
 import { InstagramGenerator } from '@/components/instagram-generator';
 import { WhatsappGenerator } from '@/components/whatsapp-generator';
 import { TwitterPostGenerator } from '@/components/twitter-post-generator';
+import { FacebookPostGenerator } from '@/components/facebook-post-generator';
 import { HistoryPage } from '@/components/history-page';
 
-type View = 'instagram' | 'whatsapp' | 'twitter' | 'tagline' | 'product' | 'history';
+type View = 'instagram' | 'whatsapp' | 'twitter' | 'tagline' | 'product' | 'history' | 'facebook';
 
 function AppContent() {
   const [activeView, setActiveView] = useState<View>('instagram');
@@ -32,6 +33,8 @@ function AppContent() {
     switch (activeView) {
         case 'instagram':
             return <InstagramGenerator />;
+        case 'facebook':
+            return <FacebookPostGenerator />;
         case 'whatsapp':
             return <WhatsappGenerator />;
         case 'twitter':

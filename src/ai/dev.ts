@@ -7,3 +7,4 @@ import '@/ai/flows/generate-short-tagline.ts';
 import '@/ai/flows/generate-whatsapp-description.ts';
 import '@/ai/flows/generate-product-description.ts';
 import '@/ai/flows/generate-twitter-post.ts';
+import '@/ai/flows/generate-facebook-post.ts';

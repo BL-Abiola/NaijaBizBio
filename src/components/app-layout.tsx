@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Facebook,
   History,
   Instagram,
   MessageCircle,
@@ -41,6 +42,7 @@ type AppLayoutProps = {
 
 const allMenuItems: { id: string; label: string; icon: React.ElementType }[] = [
     { id: 'instagram', label: 'Instagram Bio', icon: Instagram },
+    { id: 'facebook', label: 'Facebook Post', icon: Facebook },
     { id: 'whatsapp', label: 'WhatsApp Info', icon: MessageCircle },
     { id: 'twitter', label: 'X / Twitter', icon: Twitter },
     { id: 'product', label: 'Product Description', icon: ShoppingBag },
