@@ -81,9 +81,9 @@ export function Settings() {
                     <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
                 </div>
             </div>
-            <div className="mt-4 flex justify-end border-t pt-4">
+            <div className="mt-4 border-t pt-4">
                 <DialogClose asChild>
-                    <Button>Done</Button>
+                    <Button className="w-full">Done</Button>
                 </DialogClose>
             </div>
         </TabsContent>
@@ -117,9 +117,9 @@ export function Settings() {
                 </div>
               </div>
             </div>
-            <div className="mt-4 flex justify-end border-t pt-4">
+            <div className="mt-4 border-t pt-4">
                 <DialogClose asChild>
-                    <Button>Done</Button>
+                    <Button className="w-full">Done</Button>
                 </DialogClose>
             </div>
         </TabsContent>
@@ -170,9 +170,9 @@ export function Settings() {
                     </div>
                 </div>
             </div>
-            <div className="mt-4 flex justify-end border-t pt-4">
+            <div className="mt-4 border-t pt-4">
                 <DialogClose asChild>
-                    <Button>Done</Button>
+                    <Button className="w-full">Done</Button>
                 </DialogClose>
             </div>
         </TabsContent>
@@ -213,9 +213,9 @@ export function Settings() {
                 </p>
               </div>
             </div>
-            <div className="mt-4 flex justify-end border-t pt-4">
+            <div className="mt-4 border-t pt-4">
                 <DialogClose asChild>
-                    <Button>Done</Button>
+                    <Button className="w-full">Done</Button>
                 </DialogClose>
             </div>
         </TabsContent>
