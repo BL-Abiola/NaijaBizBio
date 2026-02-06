@@ -11,6 +11,12 @@ import {
 } from 'lucide-react';
 import { useSettings, type GeneratorId } from '@/context/settings-context';
 import { cn } from '@/lib/utils';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type NavigationProps = {
   activeView: string;
@@ -52,21 +58,31 @@ export function Navigation({ activeView, setActiveView }: NavigationProps) {
             </div>
             <div className="hidden sm:block">
                 <div className="border-b border-border">
-                    <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-                        {menuItems.map((tab) => (
-                        <button
-                            key={tab.id}
-                            onClick={() => setActiveView(tab.id)}
-                            className={cn(
-                            'whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm',
-                            tab.id === activeView
-                                ? 'border-primary text-primary'
-                                : 'border-transparent text-muted-foreground hover:text-foreground'
-                            )}
-                        >
-                            {tab.label}
-                        </button>
-                        ))}
+                    <nav className="-mb-px flex justify-center space-x-6" aria-label="Tabs">
+                        <TooltipProvider>
+                            {menuItems.map((tab) => (
+                            <Tooltip key={tab.id} delayDuration={0}>
+                                <TooltipTrigger asChild>
+                                <button
+                                    key={tab.id}
+                                    onClick={() => setActiveView(tab.id)}
+                                    className={cn(
+                                    'whitespace-nowrap pb-4 px-2 border-b-2 font-medium',
+                                    tab.id === activeView
+                                        ? 'border-primary text-primary'
+                                        : 'border-transparent text-muted-foreground hover:text-foreground'
+                                    )}
+                                >
+                                    <tab.icon className="h-5 w-5" />
+                                    <span className="sr-only">{tab.label}</span>
+                                </button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>{tab.label}</p>
+                                </TooltipContent>
+                            </Tooltip>
+                            ))}
+                        </TooltipProvider>
                     </nav>
                 </div>
             </div>
