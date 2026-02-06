@@ -11,12 +11,8 @@ import {
 } from 'lucide-react';
 import { useSettings, type GeneratorId } from '@/context/settings-context';
 import { cn } from '@/lib/utils';
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 
 type NavigationProps = {
   activeView: string;
@@ -24,11 +20,11 @@ type NavigationProps = {
 };
 
 const allMenuItems: { id: GeneratorId | 'history' ; label: string; icon: React.ElementType }[] = [
-    { id: 'instagram', label: 'Instagram Bio', icon: Instagram },
-    { id: 'facebook', label: 'Facebook Post', icon: Facebook },
-    { id: 'whatsapp', label: 'WhatsApp Info', icon: MessageCircle },
+    { id: 'instagram', label: 'Instagram', icon: Instagram },
+    { id: 'facebook', label: 'Facebook', icon: Facebook },
+    { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
     { id: 'twitter', label: 'X / Twitter', icon: Twitter },
-    { id: 'product', label: 'Product Description', icon: ShoppingBag },
+    { id: 'product', label: 'Product', icon: ShoppingBag },
     { id: 'tagline', label: 'Tagline', icon: Tags },
     { id: 'history', label: 'History', icon: History },
 ];
@@ -43,49 +39,27 @@ export function Navigation({ activeView, setActiveView }: NavigationProps) {
 
     return (
         <div className="mb-8">
-            <div className="sm:hidden">
-                <select
-                    id="tabs"
-                    name="tabs"
-                    className="block w-full rounded-md border-input bg-background focus:ring-primary focus:border-primary"
-                    value={activeView}
-                    onChange={(e) => setActiveView(e.target.value)}
-                >
-                    {menuItems.map((tab) => (
-                        <option key={tab.id} value={tab.id}>{tab.label}</option>
-                    ))}
-                </select>
-            </div>
-            <div className="hidden sm:block">
+            <ScrollArea className="w-full">
                 <div className="border-b border-border">
-                    <nav className="-mb-px flex justify-center space-x-6" aria-label="Tabs">
-                        <TooltipProvider>
-                            {menuItems.map((tab) => (
-                            <Tooltip key={tab.id} delayDuration={0}>
-                                <TooltipTrigger asChild>
-                                <button
-                                    key={tab.id}
-                                    onClick={() => setActiveView(tab.id)}
-                                    className={cn(
-                                    'whitespace-nowrap pb-4 px-2 border-b-2 font-medium',
-                                    tab.id === activeView
-                                        ? 'border-primary text-primary'
-                                        : 'border-transparent text-muted-foreground hover:text-foreground'
-                                    )}
-                                >
-                                    <tab.icon className="h-5 w-5" />
-                                    <span className="sr-only">{tab.label}</span>
-                                </button>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    <p>{tab.label}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                            ))}
-                        </TooltipProvider>
+                    <nav className="-mb-px flex justify-center space-x-2 sm:space-x-4" aria-label="Tabs">
+                        {menuItems.map((tab) => (
+                        <button
+                            key={tab.id}
+                            onClick={() => setActiveView(tab.id)}
+                            className={cn(
+                            'group inline-flex items-center gap-2 whitespace-nowrap py-4 px-1 border-b-2 font-medium',
+                            tab.id === activeView
+                                ? 'border-primary text-primary'
+                                : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground'
+                            )}
+                        >
+                            <tab.icon className="h-5 w-5" />
+                            <span className="hidden sm:inline text-sm">{tab.label}</span>
+                        </button>
+                        ))}
                     </nav>
                 </div>
-            </div>
+            </ScrollArea>
         </div>
     );
 }
