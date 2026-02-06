@@ -17,7 +17,6 @@ const GenerateInstagramBioInputSchema = z.object({
   valueProposition: z.string().describe('The value proposition of the business.'),
   callToAction: z.string().describe('A call to action for the bio.'),
   tone: z.string().describe('The desired tone for the bio.'),
-  includeEmojis: z.boolean().describe('Whether to include emojis.'),
 });
 export type GenerateInstagramBioInput = z.infer<typeof GenerateInstagramBioInputSchema>;
 
@@ -51,7 +50,7 @@ Your task is to generate **3 unique Instagram bio options** based on the details
 
 **Style Guidelines:**
 *   **Tone:** Your tone should be: **{{{tone}}}**. If the tone is 'Nigerian', feel free to use popular, positive slang like 'No wahala', 'Sabi', or 'Naija-made'. Keep it authentic and not over-the-top.
-*   **Emojis:** {{#if includeEmojis}}Weave in relevant emojis to add personality and break up the text.{{else}}Do not use any emojis.{{/if}}
+*   **Emojis:** Weave in relevant emojis to add personality and break up the text.
 
 Format your response as a single block of text. Present the 3 bios as a numbered list, separated by a blank line.
   `,

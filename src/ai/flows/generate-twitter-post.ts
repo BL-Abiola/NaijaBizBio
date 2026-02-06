@@ -14,7 +14,6 @@ import {z} from 'genkit';
 const GenerateTwitterPostInputSchema = z.object({
   topic: z.string().describe('The topic or announcement for the post.'),
   tone: z.string().describe('The desired tone for the post.'),
-  includeEmojis: z.boolean().describe('Whether to include emojis.'),
 });
 export type GenerateTwitterPostInput = z.infer<typeof GenerateTwitterPostInputSchema>;
 
@@ -40,7 +39,7 @@ Your task is to generate **3 unique post options** based on the topic provided. 
 
 **Style Guidelines:**
 *   **Tone:** Your tone should be: **{{{tone}}}**.
-*   **Emojis:** {{#if includeEmojis}}Use relevant emojis to increase engagement.{{else}}Do not use any emojis.{{/if}}
+*   **Emojis:** Use relevant emojis to increase engagement.
 
 The posts should be engaging, concise, and designed to capture attention.
 

@@ -37,7 +37,7 @@ export function ProductDescriptionGenerator() {
   const [generation, setGeneration] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
-  const { tone, includeEmojis } = useSettings();
+  const { tone } = useSettings();
   const { addHistoryItem } = useHistory();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -50,7 +50,7 @@ export function ProductDescriptionGenerator() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
-      const apiInput = { ...values, tone, includeEmojis };
+      const apiInput = { ...values, tone };
       const { description, error } = await generateProductDescription(apiInput);
       if (error) {
         toast({

@@ -18,10 +18,6 @@ const GenerateShortTaglineInputSchema = z.object({
   tone: z
     .string()
     .describe('The desired tone for the tagline.'),
-  includeEmojis: z
-    .boolean()
-    .default(true)
-    .describe('Whether to include relevant emojis.'),
 });
 export type GenerateShortTaglineInput = z.infer<typeof GenerateShortTaglineInputSchema>;
 
@@ -53,7 +49,7 @@ Your task is to generate **3 unique tagline options** based on the business desc
 
 **Style Guidelines:**
 *   **Tone:** Your tone should be: **{{{tone}}}**.
-*   **Emojis:** {{#if includeEmojis}}If it fits, you can add a single, powerful emoji at the end.{{else}}Do not include any emojis.{{/if}}
+*   **Emojis:** If it fits, you can add a single, powerful emoji at the end.
 
 The tagline should perfectly encapsulate the business's essence.
 

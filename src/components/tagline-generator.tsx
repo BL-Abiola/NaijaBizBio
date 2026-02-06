@@ -35,7 +35,7 @@ export function TaglineGenerator() {
   const [generation, setGeneration] = useState<string | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
-  const { tone, includeEmojis } = useSettings();
+  const { tone } = useSettings();
   const { addHistoryItem } = useHistory();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -47,7 +47,7 @@ export function TaglineGenerator() {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
-      const apiInput = { ...values, tone, includeEmojis };
+      const apiInput = { ...values, tone };
       const { tagline, error } = await generateShortTagline(apiInput);
       if (error) {
         toast({

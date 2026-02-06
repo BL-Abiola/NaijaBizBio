@@ -8,7 +8,6 @@ type EnabledGenerators = Record<GeneratorId, boolean>;
 
 const defaultSettings = {
   tone: 'Nigerian' as Tone,
-  includeEmojis: true,
   enabledGenerators: {
     instagram: true,
     whatsapp: true,
@@ -21,8 +20,6 @@ const defaultSettings = {
 type SettingsContextType = {
   tone: Tone;
   setTone: (value: Tone) => void;
-  includeEmojis: boolean;
-  setIncludeEmojis: (value: boolean) => void;
   enabledGenerators: EnabledGenerators;
   toggleGenerator: (id: GeneratorId) => void;
   resetSettings: () => void;
@@ -32,7 +29,6 @@ const SettingsContext = createContext<SettingsContextType | undefined>(undefined
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [tone, setTone] = useState<Tone>(defaultSettings.tone);
-  const [includeEmojis, setIncludeEmojis] = useState(defaultSettings.includeEmojis);
   const [enabledGenerators, setEnabledGenerators] = useState<EnabledGenerators>(
     defaultSettings.enabledGenerators
   );
@@ -43,7 +39,6 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
   const resetSettings = () => {
     setTone(defaultSettings.tone);
-    setIncludeEmojis(defaultSettings.includeEmojis);
     setEnabledGenerators(defaultSettings.enabledGenerators);
   }
 
@@ -52,8 +47,6 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
       value={{
         tone,
         setTone,
-        includeEmojis,
-        setIncludeEmojis,
         enabledGenerators,
         toggleGenerator,
         resetSettings,

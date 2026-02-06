@@ -15,7 +15,6 @@ const GenerateProductDescriptionInputSchema = z.object({
   productName: z.string().describe('The name of the product.'),
   productFeatures: z.string().describe('Key features or details about the product.'),
   tone: z.string().describe('The desired tone for the description.'),
-  includeEmojis: z.boolean().describe('Whether to include emojis.'),
 });
 export type GenerateProductDescriptionInput = z.infer<typeof GenerateProductDescriptionInputSchema>;
 
@@ -42,7 +41,7 @@ Your task is to generate **3 unique product description options** based on the d
 
 **Style Guidelines:**
 *   **Tone:** Your tone should be: **{{{tone}}}**.
-*   **Emojis:** {{#if includeEmojis}}Weave in relevant emojis to make the description more engaging.{{else}}Do not use any emojis.{{/if}}
+*   **Emojis:** Weave in relevant emojis to make the description more engaging.
 
 Focus on benefits over features. Paint a picture for the customer and make them feel like they need this product.
 

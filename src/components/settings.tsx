@@ -55,7 +55,6 @@ const otherGeneratorOptions: {id: GeneratorId, label: string}[] = [
 export function Settings() {
   const { 
     tone, setTone, 
-    includeEmojis, setIncludeEmojis,
     enabledGenerators, toggleGenerator,
     resetSettings,
   } = useSettings();
@@ -259,26 +258,20 @@ export function Settings() {
         </TabsContent>
         <TabsContent value="style" className="pt-6">
             <div className="max-h-[250px] space-y-3 overflow-y-auto p-1">
-              <div className="space-y-4 rounded-lg border p-4">
-                <div className="flex flex-row items-center justify-between">
-                    <Label>Tone of Voice</Label>
-                    <Select value={tone} onValueChange={setTone}>
-                        <SelectTrigger className="w-[140px]">
-                            <SelectValue placeholder="Select tone" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="Nigerian">Nigerian</SelectItem>
-                            <SelectItem value="Professional">Professional</SelectItem>
-                            <SelectItem value="Playful">Playful</SelectItem>
-                            <SelectItem value="Witty">Witty</SelectItem>
-                            <SelectItem value="Inspirational">Inspirational</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div className="flex flex-row items-center justify-between">
-                    <Label htmlFor="include-emojis-switch">Include Emojis</Label>
-                    <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
-                </div>
+              <div className="flex flex-row items-center justify-between rounded-lg border p-4">
+                <Label>Tone of Voice</Label>
+                <Select value={tone} onValueChange={setTone}>
+                    <SelectTrigger className="w-[140px]">
+                        <SelectValue placeholder="Select tone" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="Nigerian">Nigerian</SelectItem>
+                        <SelectItem value="Professional">Professional</SelectItem>
+                        <SelectItem value="Playful">Playful</SelectItem>
+                        <SelectItem value="Witty">Witty</SelectItem>
+                        <SelectItem value="Inspirational">Inspirational</SelectItem>
+                    </SelectContent>
+                </Select>
               </div>
             </div>
             <div className="mt-4 border-t pt-4">
