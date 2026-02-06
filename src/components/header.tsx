@@ -1,5 +1,14 @@
 import { Logo } from '@/components/logo';
-import { SidebarTrigger } from '@/components/ui/sidebar';
+import { Settings } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Settings as SettingsComponent } from '@/components/settings';
 
 export function Header() {
   return (
@@ -15,7 +24,22 @@ export function Header() {
           </p>
         </div>
       </div>
-      <SidebarTrigger className="md:hidden" />
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline" size="icon">
+            <Settings />
+            <span className="sr-only">Settings</span>
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-xs rounded-3xl">
+          <DialogHeader>
+            <DialogTitle>Settings</DialogTitle>
+          </DialogHeader>
+          <div className="py-4">
+            <SettingsComponent />
+          </div>
+        </DialogContent>
+      </Dialog>
     </header>
   );
 }
