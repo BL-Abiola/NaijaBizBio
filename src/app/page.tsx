@@ -46,70 +46,68 @@ function AppContent() {
 
   const isSocialView = ['instagram', 'whatsapp', 'twitter'].includes(activeView);
 
-  const navItemClasses = "w-full inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+  const navItemClasses = "w-full h-auto px-3 py-1.5 text-sm font-medium";
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
-        <div className="w-full max-w-5xl mx-auto">
-            <Header />
-            
-            <div className="grid w-full grid-cols-4 gap-1 rounded-md bg-muted p-1 text-muted-foreground mb-6">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button 
-                      variant="ghost" 
-                      className={cn(navItemClasses, isSocialView && "bg-background text-foreground shadow-sm")}
-                    >
-                      <Share2 className="h-4 w-4 md:mr-2" />
-                      <span className="hidden md:inline">Social</span>
-                      <ChevronDown className="h-4 w-4 ml-1 hidden md:inline"/>
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start">
-                    <DropdownMenuItem onClick={() => setActiveView('instagram')}>
-                      <Instagram className="mr-2 h-4 w-4" />
-                      <span>Instagram</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setActiveView('whatsapp')}>
-                      <MessageCircle className="mr-2 h-4 w-4" />
-                      <span>WhatsApp</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => setActiveView('twitter')}>
-                      <Twitter className="mr-2 h-4 w-4" />
-                      <span>X / Twitter</span>
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Header />
+        
+        <div className="grid w-full grid-cols-4 gap-1 rounded-md bg-muted p-1 text-muted-foreground mb-6">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  className={cn(navItemClasses, isSocialView && "bg-background text-foreground shadow-sm")}
+                >
+                  <Share2 className="h-4 w-4 md:mr-2" />
+                  <span className="hidden md:inline">Social</span>
+                  <ChevronDown className="h-4 w-4 ml-1 hidden md:inline"/>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <DropdownMenuItem onClick={() => setActiveView('instagram')}>
+                  <Instagram className="mr-2 h-4 w-4" />
+                  <span>Instagram</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setActiveView('whatsapp')}>
+                  <MessageCircle className="mr-2 h-4 w-4" />
+                  <span>WhatsApp</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setActiveView('twitter')}>
+                  <Twitter className="mr-2 h-4 w-4" />
+                  <span>X / Twitter</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-                <Button 
-                    variant="ghost" 
-                    className={cn(navItemClasses, activeView === 'tagline' && "bg-background text-foreground shadow-sm")}
-                    onClick={() => setActiveView('tagline')}
-                >
-                    <Tags className="h-4 w-4 md:mr-2" />
-                    <span className="hidden md:inline">Tagline</span>
-                </Button>
-                <Button 
-                    variant="ghost" 
-                    className={cn(navItemClasses, activeView === 'product' && "bg-background text-foreground shadow-sm")}
-                    onClick={() => setActiveView('product')}
-                >
-                    <ShoppingBag className="h-4 w-4 md:mr-2" />
-                    <span className="hidden md:inline">Product</span>
-                </Button>
-                <Button 
-                    variant="ghost" 
-                    className={cn(navItemClasses, activeView === 'history' && "bg-background text-foreground shadow-sm")}
-                    onClick={() => setActiveView('history')}
-                >
-                    <History className="h-4 w-4 md:mr-2" />
-                    <span className="hidden md:inline">History</span>
-                </Button>
-            </div>
+            <Button 
+                variant="ghost" 
+                className={cn(navItemClasses, activeView === 'tagline' && "bg-background text-foreground shadow-sm")}
+                onClick={() => setActiveView('tagline')}
+            >
+                <Tags className="h-4 w-4 md:mr-2" />
+                <span className="hidden md:inline">Tagline</span>
+            </Button>
+            <Button 
+                variant="ghost" 
+                className={cn(navItemClasses, activeView === 'product' && "bg-background text-foreground shadow-sm")}
+                onClick={() => setActiveView('product')}
+            >
+                <ShoppingBag className="h-4 w-4 md:mr-2" />
+                <span className="hidden md:inline">Product</span>
+            </Button>
+            <Button 
+                variant="ghost" 
+                className={cn(navItemClasses, activeView === 'history' && "bg-background text-foreground shadow-sm")}
+                onClick={() => setActiveView('history')}
+            >
+                <History className="h-4 w-4 md:mr-2" />
+                <span className="hidden md:inline">History</span>
+            </Button>
+        </div>
 
-            <div className="mt-6">
-              {renderContent()}
-            </div>
+        <div className="mt-6">
+          {renderContent()}
         </div>
     </div>
   );
