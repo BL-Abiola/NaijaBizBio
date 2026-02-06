@@ -54,7 +54,7 @@ function AppContent() {
         : "text-muted-foreground bg-transparent hover:bg-primary/10 hover:text-primary"
     );
 
-  const navIconClasses = "h-5 w-5 mr-2";
+  const navIconClasses = "h-5 w-5 md:mr-2";
 
   return (
     <div className="w-full">
@@ -65,8 +65,8 @@ function AppContent() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className={navButtonClasses(isSocialView)}>
                   <Share2 className={navIconClasses} />
-                  <span>Social</span>
-                  <ChevronDown className="h-4 w-4 ml-1" />
+                  <span className="hidden md:inline">Social</span>
+                  <ChevronDown className="h-4 w-4 ml-1 hidden md:inline" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
@@ -91,7 +91,7 @@ function AppContent() {
                 className={navButtonClasses(activeView === 'tagline')}
             >
                 <Tags className={navIconClasses} />
-                <span>Tagline</span>
+                <span className="hidden md:inline">Tagline</span>
             </Button>
             <Button 
                 variant="ghost"
@@ -99,7 +99,7 @@ function AppContent() {
                 className={navButtonClasses(activeView === 'product')}
             >
                 <ShoppingBag className={navIconClasses} />
-                <span>Product</span>
+                <span className="hidden md:inline">Product</span>
             </Button>
             <Button 
                 variant="ghost"
@@ -107,7 +107,7 @@ function AppContent() {
                 className={navButtonClasses(activeView === 'history')}
             >
                 <History className={navIconClasses} />
-                <span>History</span>
+                <span className="hidden md:inline">History</span>
             </Button>
         </div>
 
