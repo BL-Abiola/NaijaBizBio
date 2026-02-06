@@ -22,6 +22,7 @@ import {
     BotMessageSquare,
     SlidersHorizontal,
     KeyRound,
+    Info,
 } from 'lucide-react';
 
 const socialGeneratorOptions: {id: GeneratorId, label: string}[] = [
@@ -70,25 +71,93 @@ export function Settings() {
   };
 
   return (
-    <Tabs defaultValue="appearance" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="appearance">
-                <Palette className="md:mr-2 h-4 w-4" />
-                <span className="hidden md:inline">Appearance</span>
-            </TabsTrigger>
-            <TabsTrigger value="style">
-                <BotMessageSquare className="md:mr-2 h-4 w-4" />
-                <span className="hidden md:inline">Style</span>
-            </TabsTrigger>
-            <TabsTrigger value="generators">
-                <SlidersHorizontal className="md:mr-2 h-4 w-4" />
-                <span className="hidden md:inline">Generators</span>
+    <Tabs defaultValue="about" className="w-full">
+        <TabsList className="grid w-full grid-cols-5">
+            <TabsTrigger value="about">
+                <Info className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">About</span>
             </TabsTrigger>
             <TabsTrigger value="api">
                 <KeyRound className="md:mr-2 h-4 w-4" />
                 <span className="hidden md:inline">API</span>
             </TabsTrigger>
+            <TabsTrigger value="appearance">
+                <Palette className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">Appearance</span>
+            </TabsTrigger>
+            <TabsTrigger value="generators">
+                <SlidersHorizontal className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">Generators</span>
+            </TabsTrigger>
+            <TabsTrigger value="style">
+                <BotMessageSquare className="md:mr-2 h-4 w-4" />
+                <span className="hidden md:inline">Style</span>
+            </TabsTrigger>
         </TabsList>
+        <TabsContent value="about" className="pt-6">
+            <div className="max-h-[400px] space-y-4 overflow-y-auto p-1">
+                <div className="rounded-lg border p-4 text-center">
+                    <h3 className="font-headline text-2xl font-bold text-primary">NaijaBizBio</h3>
+                    <p className="text-sm text-muted-foreground">Version 1.0.0</p>
+                    <p className="mt-2 text-foreground/80">
+                        Your AI-powered assistant for crafting the perfect bios, taglines, and descriptions for your Nigerian business.
+                    </p>
+                </div>
+                 <div className="rounded-lg border p-4 text-center">
+                    <p className="text-sm text-muted-foreground">
+                        Made with ❤️ in Lagos, Nigeria.
+                    </p>
+                </div>
+            </div>
+            <div className="mt-4 border-t pt-4">
+                <DialogClose asChild>
+                    <Button className="w-full">Done</Button>
+                </DialogClose>
+            </div>
+        </TabsContent>
+        <TabsContent value="api" className="pt-6">
+            <div className="max-h-[400px] space-y-2 overflow-y-auto p-1">
+              <div className="rounded-lg border p-3 space-y-2">
+                <div className="space-y-1">
+                  <Label htmlFor="api-key-input">Google AI API Key</Label>
+                  <p className="text-sm text-muted-foreground">
+                  Enter your Google AI API key below.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Input
+                    id="api-key-input"
+                    type="password"
+                    placeholder="Paste your API key here"
+                    value={apiKey}
+                    onChange={(e) => setApiKey(e.target.value)}
+                    className="flex-1"
+                  />
+                  <Button onClick={handleSaveApiKey} variant="secondary">
+                    Save Key
+                  </Button>
+                </div>
+
+                <p className="text-xs text-muted-foreground">
+                  Get your key from{" "}
+                  <a
+                    href="https://aistudio.google.com/app/apikey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    Google AI Studio
+                  </a>.
+                </p>
+              </div>
+            </div>
+            <div className="mt-4 border-t pt-4">
+                <DialogClose asChild>
+                    <Button className="w-full">Done</Button>
+                </DialogClose>
+            </div>
+        </TabsContent>
         <TabsContent value="appearance" className="pt-6">
             <div className="max-h-[400px] space-y-2 overflow-y-auto p-1">
                 <div className="flex flex-row items-center justify-between rounded-lg border p-3">
@@ -98,42 +167,6 @@ export function Settings() {
                     </div>
                     <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
                 </div>
-            </div>
-            <div className="mt-4 border-t pt-4">
-                <DialogClose asChild>
-                    <Button className="w-full">Done</Button>
-                </DialogClose>
-            </div>
-        </TabsContent>
-        <TabsContent value="style" className="pt-6">
-            <div className="max-h-[400px] space-y-3 overflow-y-auto p-1">
-              <div className="rounded-lg border p-3 space-y-3">
-                <div className="flex flex-row items-center justify-between">
-                    <div className="space-y-0.5">
-                        <Label>Tone of Voice</Label>
-                        <p className="text-sm text-muted-foreground">Set the personality for the AI.</p>
-                    </div>
-                    <Select value={tone} onValueChange={setTone}>
-                        <SelectTrigger className="w-[140px]">
-                            <SelectValue placeholder="Select tone" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="Nigerian">Nigerian</SelectItem>
-                            <SelectItem value="Professional">Professional</SelectItem>
-                            <SelectItem value="Playful">Playful</SelectItem>
-                            <SelectItem value="Witty">Witty</SelectItem>
-                            <SelectItem value="Inspirational">Inspirational</SelectItem>
-                        </SelectContent>
-                    </Select>
-                </div>
-                <div className="flex flex-row items-center justify-between">
-                    <div className="space-y-0.5">
-                        <Label htmlFor="include-emojis-switch">Include Emojis</Label>
-                        <p className="text-sm text-muted-foreground">Add emojis for personality.</p>
-                    </div>
-                    <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
-                </div>
-              </div>
             </div>
             <div className="mt-4 border-t pt-4">
                 <DialogClose asChild>
@@ -194,41 +227,34 @@ export function Settings() {
                 </DialogClose>
             </div>
         </TabsContent>
-        <TabsContent value="api" className="pt-6">
-            <div className="max-h-[400px] space-y-2 overflow-y-auto p-1">
-              <div className="rounded-lg border p-3 space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="api-key-input">Google AI API Key</Label>
-                  <p className="text-sm text-muted-foreground">
-                  Enter your Google AI API key below.
-                  </p>
+        <TabsContent value="style" className="pt-6">
+            <div className="max-h-[400px] space-y-3 overflow-y-auto p-1">
+              <div className="rounded-lg border p-3 space-y-3">
+                <div className="flex flex-row items-center justify-between">
+                    <div className="space-y-0.5">
+                        <Label>Tone of Voice</Label>
+                        <p className="text-sm text-muted-foreground">Set the personality for the AI.</p>
+                    </div>
+                    <Select value={tone} onValueChange={setTone}>
+                        <SelectTrigger className="w-[140px]">
+                            <SelectValue placeholder="Select tone" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="Nigerian">Nigerian</SelectItem>
+                            <SelectItem value="Professional">Professional</SelectItem>
+                            <SelectItem value="Playful">Playful</SelectItem>
+                            <SelectItem value="Witty">Witty</SelectItem>
+                            <SelectItem value="Inspirational">Inspirational</SelectItem>
+                        </SelectContent>
+                    </Select>
                 </div>
-
-                <div className="flex items-center gap-2">
-                  <Input
-                    id="api-key-input"
-                    type="password"
-                    placeholder="Paste your API key here"
-                    value={apiKey}
-                    onChange={(e) => setApiKey(e.target.value)}
-                    className="flex-1"
-                  />
-                  <Button onClick={handleSaveApiKey} variant="secondary">
-                    Save Key
-                  </Button>
+                <div className="flex flex-row items-center justify-between">
+                    <div className="space-y-0.5">
+                        <Label htmlFor="include-emojis-switch">Include Emojis</Label>
+                        <p className="text-sm text-muted-foreground">Add emojis for personality.</p>
+                    </div>
+                    <Switch id="include-emojis-switch" checked={includeEmojis} onCheckedChange={setIncludeEmojis} />
                 </div>
-
-                <p className="text-xs text-muted-foreground">
-                  Get your key from{" "}
-                  <a
-                    href="https://aistudio.google.com/app/apikey"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                  >
-                    Google AI Studio
-                  </a>.
-                </p>
               </div>
             </div>
             <div className="mt-4 border-t pt-4">
