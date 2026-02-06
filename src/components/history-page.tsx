@@ -57,10 +57,10 @@ export function HistoryPage() {
           <CardTitle>Generation History</CardTitle>
           <CardDescription>Review your past generations.</CardDescription>
         </CardHeader>
-      <CardContent>
+      <CardContent className="px-0 pt-0">
         {history.length > 0 ? (
           <ScrollArea className="h-96">
-            <Accordion type="single" collapsible className="w-full space-y-2 pr-4">
+            <Accordion type="single" collapsible className="w-full space-y-2 px-4">
               {history.map((item) => (
                 <AccordionItem value={item.id} key={item.id} className="rounded-lg border">
                   <AccordionTrigger className="p-4 hover:no-underline">
@@ -109,7 +109,7 @@ export function HistoryPage() {
             </Accordion>
           </ScrollArea>
         ) : (
-          <div className="flex h-48 flex-col items-center justify-center rounded-md border border-dashed text-center">
+          <div className="mx-6 flex h-48 flex-col items-center justify-center rounded-md border border-dashed text-center">
             <p className="text-lg font-medium text-foreground">No History Yet</p>
             <p className="text-sm text-muted-foreground">
               Your generated content will appear here.
