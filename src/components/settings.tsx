@@ -37,7 +37,7 @@ import {
     Info,
     Trash2,
     Mail,
-    Twitter
+    X
 } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
@@ -143,7 +143,7 @@ export function Settings() {
                                 rel="noopener noreferrer"
                                 className="text-muted-foreground hover:text-primary transition-colors"
                             >
-                                <Twitter className="h-5 w-5" />
+                                <X className="h-5 w-5" />
                                 <span className="sr-only">X</span>
                             </a>
                             <a

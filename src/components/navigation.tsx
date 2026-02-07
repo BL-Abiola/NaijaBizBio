@@ -7,7 +7,7 @@ import {
     MessageCircle,
     ShoppingBag,
     Tags,
-    Twitter,
+    X,
     Users,
     ChevronDown
 } from 'lucide-react';
@@ -28,7 +28,7 @@ type NavigationProps = {
 const socialMenuItems: { id: GeneratorId; label: string; icon: React.ElementType }[] = [
     { id: 'facebook', label: 'Facebook', icon: Facebook },
     { id: 'instagram', label: 'Instagram', icon: Instagram },
-    { id: 'twitter', label: 'X / Twitter', icon: Twitter },
+    { id: 'twitter', label: 'X / Twitter', icon: X },
     { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
 ];
 
