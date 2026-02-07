@@ -26,7 +26,7 @@ export function Header() {
       </div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" size="icon">
+          <Button variant="ghost" size="icon" className="text-foreground/80 hover:bg-primary/10 hover:text-primary">
             <Settings />
             <span className="sr-only">Settings</span>
           </Button>
