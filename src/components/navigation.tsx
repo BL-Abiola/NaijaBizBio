@@ -26,8 +26,8 @@ type NavigationProps = {
 };
 
 const socialMenuItems: { id: GeneratorId; label: string; icon: React.ElementType }[] = [
-    { id: 'instagram', label: 'Instagram', icon: Instagram },
     { id: 'facebook', label: 'Facebook', icon: Facebook },
+    { id: 'instagram', label: 'Instagram', icon: Instagram },
     { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
     { id: 'twitter', label: 'X / Twitter', icon: Twitter },
 ];
