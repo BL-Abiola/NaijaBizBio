@@ -37,8 +37,8 @@ import {
     Info,
     Trash2,
     Mail,
-    X
 } from 'lucide-react';
+import { XLogo } from '@/components/icons/x-logo';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const socialGeneratorOptions: {id: GeneratorId, label: string}[] = [
@@ -143,7 +143,7 @@ export function Settings() {
                                 rel="noopener noreferrer"
                                 className="text-muted-foreground hover:text-primary transition-colors"
                             >
-                                <X className="h-5 w-5" />
+                                <XLogo className="h-5 w-5" />
                                 <span className="sr-only">X</span>
                             </a>
                             <a

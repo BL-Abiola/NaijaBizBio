@@ -7,10 +7,10 @@ import {
     MessageCircle,
     ShoppingBag,
     Tags,
-    X,
     Users,
     ChevronDown
 } from 'lucide-react';
+import { XLogo } from '@/components/icons/x-logo';
 import { useSettings, type GeneratorId } from '@/context/settings-context';
 import { cn } from '@/lib/utils';
 import {
@@ -28,7 +28,7 @@ type NavigationProps = {
 const socialMenuItems: { id: GeneratorId; label: string; icon: React.ElementType }[] = [
     { id: 'facebook', label: 'Facebook', icon: Facebook },
     { id: 'instagram', label: 'Instagram', icon: Instagram },
-    { id: 'twitter', label: 'X / Twitter', icon: X },
+    { id: 'twitter', label: 'X / Twitter', icon: XLogo },
     { id: 'whatsapp', label: 'WhatsApp', icon: MessageCircle },
 ];
 
