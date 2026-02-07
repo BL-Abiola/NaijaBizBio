@@ -138,13 +138,13 @@ export function Settings() {
                         <Separator className="my-4" />
                         <div className="flex items-center justify-center space-x-4">
                             <a
-                                href="https://twitter.com/BL_Abiola"
+                                href="https://x.com/BL_Abiola"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="text-muted-foreground hover:text-primary transition-colors"
                             >
                                 <Twitter className="h-5 w-5" />
-                                <span className="sr-only">Twitter</span>
+                                <span className="sr-only">X</span>
                             </a>
                             <a
                                 href="mailto:contact@blabiola.dev"
@@ -335,3 +335,5 @@ export function Settings() {
     </Tabs>
   );
 }
+
+    
