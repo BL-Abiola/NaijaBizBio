@@ -120,7 +120,7 @@ export function Settings() {
         <TabsContent value="about" className="pt-6">
             <ScrollArea className="h-[220px]">
                 <div className="space-y-4 p-1">
-                    <div className="rounded-lg border p-4 text-center">
+                    <div className="rounded-2xl border p-4 text-center">
                         <div>
                             <h3 className="font-headline text-2xl font-bold text-primary">SabiWriter</h3>
                             <p className="text-sm text-muted-foreground">Version 1.0.0</p>
@@ -133,7 +133,7 @@ export function Settings() {
                             <h4 className="font-semibold text-foreground">Built by BL_Abiola</h4>
                         </div>
                     </div>
-                    <div className="rounded-lg border p-4 text-center">
+                    <div className="rounded-2xl border p-4 text-center">
                         <h4 className="font-semibold text-foreground">Contact</h4>
                         <Separator className="my-4" />
                         <div className="flex items-center justify-center space-x-4">
@@ -166,7 +166,7 @@ export function Settings() {
         <TabsContent value="data" className="pt-6">
             <ScrollArea className="h-[220px]">
                 <div className="space-y-4 p-1">
-                <div className="rounded-lg border p-4 space-y-2">
+                <div className="rounded-2xl border p-4 space-y-2">
                     <div className="space-y-1">
                     <Label htmlFor="api-key-input">Google AI API Key</Label>
                     <p className="text-sm text-muted-foreground">
@@ -200,7 +200,7 @@ export function Settings() {
                     </a>.
                     </p>
                 </div>
-                <div className="rounded-lg border border-destructive p-4">
+                <div className="rounded-2xl border border-destructive p-4">
                         <div className="mb-4">
                             <Label className="text-base font-bold text-destructive">Danger Zone</Label>
                             <p className="text-sm text-muted-foreground">
@@ -261,7 +261,7 @@ export function Settings() {
         <TabsContent value="appearance" className="pt-6">
             <ScrollArea className="h-[220px]">
                 <div className="p-1">
-                    <div className="space-y-3 rounded-lg border p-4">
+                    <div className="space-y-3 rounded-2xl border p-4">
                         <div className="flex flex-row items-center justify-between">
                             <Label htmlFor="dark-mode-switch" className="font-medium">Dark Mode</Label>
                             <Switch id="dark-mode-switch" checked={theme === 'dark'} onCheckedChange={toggleTheme} />
@@ -294,7 +294,7 @@ export function Settings() {
         <TabsContent value="generators" className="pt-6">
             <ScrollArea className="h-[220px]">
                 <div className="space-y-4 p-1">
-                    <div className="rounded-lg border p-4">
+                    <div className="rounded-2xl border p-4">
                         <Label className="font-medium">Social Platforms</Label>
                         <div className="space-y-3 pt-3">
                             {socialGeneratorOptions.map(gen => (
@@ -309,7 +309,7 @@ export function Settings() {
                             ))}
                         </div>
                     </div>
-                    <div className="rounded-lg border p-4">
+                    <div className="rounded-2xl border p-4">
                         <Label className="font-medium">Other Tools</Label>
                         <div className="space-y-3 pt-3">
                             {otherGeneratorOptions.map(gen => (
