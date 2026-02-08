@@ -148,7 +148,7 @@ export function OnboardingDialog({ isOpen, onComplete }: OnboardingDialogProps) 
         </div>
 
         <DialogFooter className="grid grid-cols-2 gap-2 pt-6">
-          <Button variant="outline" onClick={handleBack} className={cn(step === 0 && "invisible")}>
+          <Button variant="outline" onClick={handleBack} className={cn(step === 0 && "invisible", "hover:bg-primary/10 hover:text-primary")}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
