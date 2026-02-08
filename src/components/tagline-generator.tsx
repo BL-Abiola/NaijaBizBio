@@ -92,7 +92,7 @@ export function TaglineGenerator() {
                       <FormLabel>Describe your business</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="e.g., An online store that sells handmade leather sandals for men and women."
+                          placeholder="Provide a short description of your business."
                           {...field}
                         />
                       </FormControl>

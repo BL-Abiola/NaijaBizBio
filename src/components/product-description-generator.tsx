@@ -94,7 +94,7 @@ export function ProductDescriptionGenerator() {
                     <FormItem>
                       <FormLabel>Product Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Aso-Oke Throw Pillow" {...field} />
+                        <Input placeholder="Enter the name of your product" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -107,7 +107,7 @@ export function ProductDescriptionGenerator() {
                     <FormItem>
                       <FormLabel>Product Features & Details</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="e.g., Handwoven fabric from Ondo state, 18x18 inches, available in 3 colors, perfect for modern homes." {...field} />
+                        <Textarea placeholder="List the key features, materials, or benefits of the product." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

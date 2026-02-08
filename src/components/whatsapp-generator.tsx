@@ -96,7 +96,7 @@ export function WhatsappGenerator() {
                     <FormItem>
                       <FormLabel>Business Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Tunde's Tech Hub" {...field} />
+                        <Input placeholder="Enter your business name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -109,7 +109,7 @@ export function WhatsappGenerator() {
                     <FormItem>
                       <FormLabel>Industry</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Gadgets & Electronics" {...field} />
+                        <Input placeholder="What industry is your business in?" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

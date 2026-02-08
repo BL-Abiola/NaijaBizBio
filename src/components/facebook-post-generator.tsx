@@ -92,7 +92,7 @@ export function FacebookPostGenerator() {
                       <FormLabel>What's your Facebook post about?</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="e.g., We're launching a new collection of handmade jewelry inspired by Nigerian culture."
+                          placeholder="What is the main topic of your post? (e.g., new product, promotion)"
                           {...field}
                         />
                       </FormControl>

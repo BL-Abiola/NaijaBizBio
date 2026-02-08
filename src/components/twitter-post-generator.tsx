@@ -92,7 +92,7 @@ export function TwitterPostGenerator() {
                       <FormLabel>What is the post about?</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="e.g., Announcing a flash sale on all our new shoes, 50% off for 24 hours!"
+                          placeholder="What do you want to post about? (e.g., a quick update, question, or announcement)"
                           {...field}
                         />
                       </FormControl>

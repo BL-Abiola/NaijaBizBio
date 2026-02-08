@@ -98,7 +98,7 @@ export function InstagramGenerator() {
                     <FormItem>
                       <FormLabel>Business Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Ada's Kitchen" {...field} />
+                        <Input placeholder="Enter your business name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -111,7 +111,7 @@ export function InstagramGenerator() {
                     <FormItem>
                       <FormLabel>What does your business do?</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="e.g., We sell authentic Nigerian dishes with a modern twist." {...field} />
+                        <Textarea placeholder="Tell us what your business sells or the service you provide." {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -124,7 +124,7 @@ export function InstagramGenerator() {
                     <FormItem>
                       <FormLabel>What makes you special?</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Fresh ingredients, delivered fast" {...field} />
+                        <Input placeholder="What makes your business stand out? (e.g., unique features, benefits)" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -137,7 +137,7 @@ export function InstagramGenerator() {
                     <FormItem>
                       <FormLabel>What should people do?</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Order now via DM!" {...field} />
+                        <Input placeholder="What action should users take? (e.g., Shop now, Learn more)" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
