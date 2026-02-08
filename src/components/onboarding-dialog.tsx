@@ -141,7 +141,7 @@ export function OnboardingDialog({ isOpen, onComplete }: OnboardingDialogProps) 
                 <button
                     key={i}
                     onClick={() => setStep(i)}
-                    className={cn('h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2', i === step ? 'w-5 bg-primary' : 'w-2 bg-muted hover:bg-border')}
+                    className={cn('h-2 rounded-full transition-all duration-300 focus-visible:outline-none', i === step ? 'w-5 bg-primary' : 'w-2 bg-muted hover:bg-border')}
                     aria-label={`Go to step ${i + 1}`}
                 />
             ))}
