@@ -12,6 +12,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { KeyRound, Sparkles, Palette, ArrowLeft, ArrowRight, PartyPopper } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Input } from '@/components/ui/input';
+import { useSettings } from '@/context/settings-context';
+import { useToast } from '@/hooks/use-toast';
 
 
 type OnboardingDialogProps = {
@@ -21,9 +24,28 @@ type OnboardingDialogProps = {
 
 export function OnboardingDialog({ isOpen, onComplete }: OnboardingDialogProps) {
   const [step, setStep] = useState(0);
+  const { setApiKey } = useSettings();
+  const { toast } = useToast();
+  const [localApiKey, setLocalApiKey] = useState('');
 
   const handleNext = () => setStep(s => Math.min(3, s + 1));
   const handleBack = () => setStep(s => Math.max(0, s - 1));
+
+  const handleSaveApiKey = () => {
+    if (!localApiKey.trim()) {
+      toast({
+        variant: 'destructive',
+        title: 'API Key is empty',
+        description: 'Please enter a valid API key.',
+      });
+      return;
+    }
+    setApiKey(localApiKey);
+    toast({
+      title: 'API Key Saved!',
+      description: 'You can now start generating content.',
+    });
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onComplete()}>
@@ -54,8 +76,26 @@ export function OnboardingDialog({ isOpen, onComplete }: OnboardingDialogProps) 
                             </div>
                         </div>
                         <p className="text-muted-foreground px-4">
-                            SabiWriter uses Google's Gemini AI. To begin, you need a free API key.
-                            Go to <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="underline text-primary">Google AI Studio</a> to get your key. Then, go to <span className="font-semibold">Settings {'>'} Data</span> and paste it in.
+                            SabiWriter uses Google's Gemini AI. To begin, get your free API key from{' '}
+                            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="underline text-primary">
+                                Google AI Studio
+                            </a>, then paste it below.
+                        </p>
+                        <div className="flex items-center gap-2 px-4 pt-2">
+                            <Input
+                                id="onboarding-api-key"
+                                type="password"
+                                placeholder="Paste your API key here"
+                                value={localApiKey}
+                                onChange={(e) => setLocalApiKey(e.target.value)}
+                                className="flex-1"
+                            />
+                            <Button onClick={handleSaveApiKey} variant="secondary">
+                                Save
+                            </Button>
+                        </div>
+                        <p className="text-xs text-muted-foreground px-4">
+                            Your key is stored securely in your browser. You can also manage it later in Settings.
                         </p>
                     </div>
                 </>
