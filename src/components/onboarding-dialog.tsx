@@ -147,13 +147,13 @@ export function OnboardingDialog({ isOpen, onComplete }: OnboardingDialogProps) 
             ))}
         </div>
 
-        <DialogFooter className="flex justify-between items-center pt-6">
+        <DialogFooter className="grid grid-cols-2 gap-2 pt-6">
           <Button variant="outline" onClick={handleBack} className={cn(step === 0 && "invisible")}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
           {step < 3 ? (
-            <Button onClick={handleNext}>
+            <Button onClick={handleNext} className={cn(step === 0 && "col-span-2")}>
                 Next
                 <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
